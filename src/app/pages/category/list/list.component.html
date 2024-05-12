@@ -1,0 +1,58 @@
+<a  [routerLink]="['/pages/cate/add']">
+  <button
+    _ngcontent-pbm-c286=""
+    nbbutton=""
+    matripple=""
+    outline=""
+    class="btnadd mat-ripple status-success appearance-outline size-small    shape-rectangle ng-star-inserted nb-transition"
+    aria-disabled="false"
+    tabindex="0"
+  >
+    Thêm Mới
+  </button>
+</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Mã ID</th>
+      <th scope="col">Tên Thể Loại</th>
+      <th scope="col">Mô tả</th>
+      <th scope="col">Thao Tác</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    <tr>
+      <th scope="row">3</th>
+      <td >Larry the Bird</td>
+     <td>hay </td>
+      <td>
+        <a [routerLink]="['/pages/cate/edit']">
+          <button
+            _ngcontent-pbm-c286=""
+            nbbutton=""
+            matripple=""
+            class="mat-ripple appearance-filled size-small shape-rectangle status-primary ng-star-inserted nb-transition"
+            aria-disabled="false"
+            tabindex="0"
+          >
+            Chỉnh Sửa
+          </button>
+        </a>
+        <a style="margin-left: 8px;" [routerLink]="['/pages/cate/delete']">
+        <button
+          _ngcontent-pbm-c286=""
+          nbbutton=""
+          matripple=""
+          class="mat-ripple appearance-filled size-small shape-rectangle status-warning ng-star-inserted nb-transition"
+          aria-disabled="false"
+          tabindex="0"
+        >
+          xóa
+        </button>
+    </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

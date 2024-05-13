@@ -16,6 +16,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/revenue',
   },
   {
+    title: 'Quản lí quà tặng',
+    icon: 'home-outline',
+    link: '/pages/gift',
+  },
+  {
     title: 'Danh Mục',
     icon: 'book',
     link: '/pages/cate',

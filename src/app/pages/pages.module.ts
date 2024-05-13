@@ -16,6 +16,9 @@ import { ListComponentfilm } from './flim/list/list.component';
 import { AddflimComponent } from './flim/addflim/addflim.component';
 import { EditfilmComponent } from './flim/editfilm/editfilm.component';
 import { DeletefilmComponent } from './flim/deletefilm/deletefilm.component';
+import { GiftComponent } from './gift/gift.component';
+import { AddGiftComponent } from './gift/add-gift/add-gift.component';
+import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
 
 @NgModule({
   imports: [
@@ -36,7 +39,10 @@ import { DeletefilmComponent } from './flim/deletefilm/deletefilm.component';
     ListComponentfilm,
     AddflimComponent,
     EditfilmComponent,
-    DeletefilmComponent
+    DeletefilmComponent,
+    GiftComponent,
+    AddGiftComponent,
+    EditGiftComponent
   ],
   providers: []
 })

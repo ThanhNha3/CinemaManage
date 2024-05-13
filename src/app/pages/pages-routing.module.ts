@@ -14,6 +14,9 @@ import { FlimComponent } from './flim/flim.component';
 import { AddflimComponent } from './flim/addflim/addflim.component';
 import { EditfilmComponent } from './flim/editfilm/editfilm.component';
 import { DeletefilmComponent } from './flim/deletefilm/deletefilm.component';
+import { GiftComponent } from './gift/gift.component';
+import { AddGiftComponent } from './gift/add-gift/add-gift.component';
+import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
 
 const routes: Routes = [
   {
@@ -39,6 +42,21 @@ const routes: Routes = [
         path: 'revenue/edit/:id',
         component: EditRevenueComponent,
         data: { breadcrumb: 'Quản lí doanh thu' },
+      },
+      {
+        path: 'gift',
+        component: GiftComponent,
+        data: { breadcrumb: 'Quản lí quà tặng' },
+      },
+      {
+        path: 'gift/add',
+        component: AddGiftComponent,
+        data: { breadcrumb: 'Quản lí quà tặng' },
+      },
+      {
+        path: 'gift/edit/:id',
+        component: EditGiftComponent,
+        data: { breadcrumb: 'Quản lí quà tặng' },
       },
       {
         path: 'cate',

@@ -10,4 +10,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'home-outline',
     link: '/pages/dashboard',
   },
+  {
+    title: 'Quản lí doanh thu',
+    icon: 'home-outline',
+    link: '/pages/revenue',
+  },
 ];

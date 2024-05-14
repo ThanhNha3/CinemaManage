@@ -1,0 +1,57 @@
+<nb-card>
+  <nb-card-header>
+    <h3 class="fw-bold fs-5">Thêm mới vé phim</h3>
+  </nb-card-header>
+  <nb-card-body>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Tên nhân viên</label>
+            <input type="text" nbInput status="basic" placeholder="Nhập tên nhân viên..." id="">
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Email</label>
+            <input type="text" nbInput status="basic" placeholder="Nhập email..." id="">
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Số điện thoại</label>
+            <input type="text" nbInput status="basic" placeholder="Nhập số điện thoại..." id="">
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Mức lương</label>
+            <input type="number" nbInput status="basic" placeholder="Nhập mức lương..." id="">
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label for="type" class="form-label">Vai trò</label>
+            <nb-select status="basic" placeholder="Chọn rạp chiếu..." id="">
+              <nb-option value="0">Quản lý</nb-option>
+              <nb-option value="1">Nhân viên</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Ngày nhận việc</label>
+            <input type="date" nbInput status="basic" placeholder="" id="">
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button nbButton hero status="primary">Thêm mới</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

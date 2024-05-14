@@ -1,0 +1,62 @@
+<nb-card>
+  <nb-card-header>
+    <h3 class="fw-bold fs-5">Chỉnh sửa xuất chiếu</h3>
+  </nb-card-header>
+  <nb-card-body>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Tên phim</label>
+            <input type="text" nbInput status="basic" value="Lật mật 7" id="">
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Giá vé</label>
+            <input type="text" nbInput status="basic" value="90.000 đ" id="">
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label for="type" class="form-label">Phòng</label>
+            <nb-select status="basic" placeholder="rạp 1" id="">
+              <nb-option value="0">Rạp 1</nb-option>
+              <nb-option value="1">Rạp 2</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label for="seatId" class="form-label">Nhân viên trực</label>
+            <nb-select status="basic" placeholder="Trân" id="">
+              <nb-option value="0">Trân</nb-option>
+              <nb-option value="1">Duy</nb-option>
+              <nb-option value="1">Nhả</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Thời gian chiếu</label>
+            <input type="time" nbInput status="basic" value="12:00" id="time-input">
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Thời gian kết thúc</label>
+            <input type="time" nbInput status="basic" value="14:30" id="">
+          </nb-form-field>
+        </div>
+
+      </div>
+      <div class="mt-3">
+        <button nbButton hero status="primary">Hoàn thành</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

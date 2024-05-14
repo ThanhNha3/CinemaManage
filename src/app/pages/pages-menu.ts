@@ -36,4 +36,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'calendar-outline',
     link: '/pages/ticket',
   },
+  {
+    title: 'Suất Chiếu Phim',
+    icon: 'video-outline',
+    link: '/pages/screening',
+  },
+  {
+    title: 'Nhân viên',
+    icon: 'people-outline',
+    link: '/pages/employee',
+  },
 ];

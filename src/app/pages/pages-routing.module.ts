@@ -17,7 +17,18 @@ import { DeletefilmComponent } from './flim/deletefilm/deletefilm.component';
 import { GiftComponent } from './gift/gift.component';
 import { AddGiftComponent } from './gift/add-gift/add-gift.component';
 import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
-
+import { ScreeningComponent } from './screening/screening.component';
+import { ScreeningAddComponent } from './screening/screening-add/screening-add.component';
+import { ScreeningEditComponent } from './screening/screening-edit/screening-edit.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
+import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.component';
+import { RoomComponent } from './room/room.component';
+import { EditRoomComponent } from './room/edit-room/edit-room.component';
+import { AddRoomComponent } from './room/add-room/add-room.component';
+import { EditTicketComponent } from './ticket/edit-ticket/edit-ticket.component';
+import { AddTicketComponent } from './ticket/add-ticket/add-ticket.component';
+import { TicketComponent } from './ticket/ticket.component';
 const routes: Routes = [
   {
     path: '',
@@ -97,6 +108,66 @@ const routes: Routes = [
         path: 'film/delete',
         component: DeletefilmComponent,
         data: { breadcrumb: 'film' },
+      },
+      {
+        path: 'screening',
+        component: ScreeningComponent,
+        data: { breadcrumb: 'Suất chiếu phim' },
+      },
+      {
+        path: 'screening/add',
+        component: ScreeningAddComponent,
+        data: { breadcrumb: 'Thêm suất chiếu' },
+      },
+      {
+        path: 'screening/edit',
+        component: ScreeningEditComponent,
+        data: { breadcrumb: 'Chỉnh sửa suất chiếu' },
+      },
+      {
+        path: 'employee',
+        component: EmployeeComponent,
+        data: { breadcrumb: 'Nhân viên' },
+      },
+      {
+        path: 'employee/add',
+        component: EmployeeAddComponent,
+        data: { breadcrumb: 'Thêm nhân viên' },
+      },
+      {
+        path: 'employee/edit',
+        component: EmployeeEditComponent,
+        data: { breadcrumb: 'Chỉnh sửa thông tin nhân viên' },
+      },
+      {
+        path: 'room',
+        component: RoomComponent,
+        data: { breadcrumb: 'Phòng chiếu' },
+      },
+      {
+        path: 'room/edit/:id',
+        component: EditRoomComponent,
+        data: { breadcrumb: 'Phòng chiếu' },
+      },
+      {
+        path: 'room/add',
+        component: AddRoomComponent,
+        data: { breadcrumb: 'Phòng chiếu' },
+      },
+      {
+        path: 'ticket',
+        component: TicketComponent,
+        data: { breadcrumb: 'Vé' },
+      },
+      {
+        path: 'ticket/edit/:id',
+        component: EditTicketComponent,
+        data: { breadcrumb: 'Vé' },
+      },
+      {
+        path: 'ticket/add',
+        component: AddTicketComponent,
+        data: { breadcrumb: 'Vé' },
       },
     ],
   },

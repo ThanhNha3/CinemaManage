@@ -1,0 +1,40 @@
+<nb-card>
+  <nb-card-header>
+    <h3 class="fw-bold fs-5">Thêm mới vé phim</h3>
+  </nb-card-header>
+  <nb-card-body>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <nb-form-field>
+            <label class="form-label" for="price">Giá vé</label>
+            <input type="text" nbInput status="basic" placeholder="Nhập tên phòng chiếu..." id="price">
+          </nb-form-field>
+        </div>
+        <div class="col-md-6">
+          <nb-form-field>
+            <label for="type" class="form-label">Mã suất chiếu</label>
+            <nb-select status="basic" placeholder="Chọn suất chiếu..." id="type">
+              <nb-option value="0">SC01</nb-option>
+              <nb-option value="1">SC02</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nb-form-field class="mt-3">
+            <label for="seatId" class="form-label">Mã ghế</label>
+            <nb-select status="basic" placeholder="Chọn trạng thái..." id="seatId">
+              <nb-option value="0">T001</nb-option>
+              <nb-option value="1">T002</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button nbButton hero status="primary">Thêm mới</button>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

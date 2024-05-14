@@ -30,4 +30,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'film',
     link: '/pages/film',
   },
+  { title: 'Phòng chiếu', icon: 'video-outline', link: '/pages/room' },
+  {
+    title: 'Vé phim',
+    icon: 'calendar-outline',
+    link: '/pages/ticket',
+  },
 ];

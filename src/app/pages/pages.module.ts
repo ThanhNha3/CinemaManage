@@ -1,6 +1,14 @@
-import {NgModule} from '@angular/core';
-import {NbMenuModule} from "@nebular/theme";
-import {ThemeModule} from '../@theme/theme.module';
+import { NgModule } from '@angular/core';
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbFormFieldModule,
+  NbIconModule,
+  NbInputModule,
+  NbMenuModule,
+  NbSelectModule,
+} from '@nebular/theme';
+import { ThemeModule } from '../@theme/theme.module';
 
 import {PagesComponent} from './pages.component';
 import {DashboardModule} from './dashboard/dashboard.module';
@@ -27,6 +35,12 @@ import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
     DashboardModule,
     NbMenuModule,
     PaginatorModule,
+    NbButtonModule,
+    NbCardModule,
+    NbIconModule,
+    NbInputModule,
+    NbSelectModule,
+    NbFormFieldModule,
   ],
   declarations: [
     PagesComponent,
@@ -44,6 +58,6 @@ import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
     AddGiftComponent,
     EditGiftComponent
   ],
-  providers: []
+  providers: [],
 })
-export class PagesModule { }
+export class PagesModule {}

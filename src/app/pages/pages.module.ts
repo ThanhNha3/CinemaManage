@@ -42,6 +42,9 @@ import { TicketComponent } from './ticket/ticket.component';
 import { AddTicketComponent } from './ticket/add-ticket/add-ticket.component';
 import { EditTicketComponent } from './ticket/edit-ticket/edit-ticket.component';
 import { ListTicketComponent } from './ticket/list-ticket/list-ticket.component';
+import { RevenueComponent } from './revenue/revenue.component';
+import { AddRevenueComponent } from './revenue/addRevenue/addRevenue.component';
+import { EditRevenueComponent } from './revenue/editRevenue/editRevenue.component';
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -58,6 +61,9 @@ import { ListTicketComponent } from './ticket/list-ticket/list-ticket.component'
   ],
   declarations: [
     PagesComponent,
+    RevenueComponent,
+    AddRevenueComponent,
+    EditRevenueComponent,
     CategoryComponent,
     ListComponent,
     AddComponent,
@@ -86,7 +92,7 @@ import { ListTicketComponent } from './ticket/list-ticket/list-ticket.component'
     TicketComponent,
     AddTicketComponent,
     EditTicketComponent,
-    ListTicketComponent
+    ListTicketComponent,
   ],
   providers: [],
 })

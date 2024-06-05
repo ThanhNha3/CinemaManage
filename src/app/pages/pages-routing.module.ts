@@ -141,33 +141,43 @@ const routes: Routes = [
       },
       {
         path: 'room',
-        component: RoomComponent,
         data: { breadcrumb: 'Phòng chiếu' },
-      },
-      {
-        path: 'room/edit/:id',
-        component: EditRoomComponent,
-        data: { breadcrumb: 'Phòng chiếu' },
-      },
-      {
-        path: 'room/add',
-        component: AddRoomComponent,
-        data: { breadcrumb: 'Phòng chiếu' },
+        children: [
+          {
+            path: '',
+            component: RoomComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditRoomComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
+          },
+          {
+            path: 'add',
+            component: AddRoomComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+        ],
       },
       {
         path: 'ticket',
-        component: TicketComponent,
         data: { breadcrumb: 'Vé' },
-      },
-      {
-        path: 'ticket/edit/:id',
-        component: EditTicketComponent,
-        data: { breadcrumb: 'Vé' },
-      },
-      {
-        path: 'ticket/add',
-        component: AddTicketComponent,
-        data: { breadcrumb: 'Vé' },
+        children: [
+          {
+            path: '',
+            component: TicketComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditTicketComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
+          },
+          {
+            path: 'add',
+            component: AddTicketComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+        ],
       },
     ],
   },

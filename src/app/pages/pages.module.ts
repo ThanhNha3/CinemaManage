@@ -45,8 +45,10 @@ import { ListTicketComponent } from './ticket/list-ticket/list-ticket.component'
 import { RevenueComponent } from './revenue/revenue.component';
 import { AddRevenueComponent } from './revenue/addRevenue/addRevenue.component';
 import { EditRevenueComponent } from './revenue/editRevenue/editRevenue.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,

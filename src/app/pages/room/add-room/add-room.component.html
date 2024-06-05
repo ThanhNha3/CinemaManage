@@ -3,21 +3,35 @@
     <h3 class="fw-bold fs-5">Thêm mới phòng chiếu</h3>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-6">
           <nb-form-field>
             <label class="form-label" for="name">Tên phòng chiếu</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập tên phòng chiếu..." id="name">
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập tên phòng chiếu..." id="name"
+              formControlName="name">
+            <div
+              *ngIf="addRoomForm.get('name')?.invalid && (addRoomForm.get('name')?.dirty || addRoomForm.get('name')?.touched)">
+              <small class="text-danger" *ngIf="addRoomForm.get('name')?.errors?.required">Tên phòng chiếu là bắt
+                buộc.</small>
+              <small class="text-danger" *ngIf="addRoomForm.get('name')?.errors?.minlength">Tên phòng chiếu phải có ít
+                nhất
+                3 ký tự.</small>
+            </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label for="type" class="form-label">Loại phòng chiếu</label>
-            <nb-select status="basic" placeholder="Chọn loại phòng..." id="type">
+            <p class="form-label">Loại phòng chiếu</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn loại phòng..." id="type" formControlName="type">
               <nb-option value="0">Phòng chiếu 2D</nb-option>
               <nb-option value="1">Phòng chiếu 3D</nb-option>
             </nb-select>
+            <div
+              *ngIf="addRoomForm.get('type')?.invalid && (addRoomForm.get('type')?.dirty || addRoomForm.get('type')?.touched)">
+              <small class="text-danger" *ngIf="addRoomForm.get('type')?.errors?.required">Loại phòng chiếu là bắt
+                buộc.</small>
+            </div>
           </nb-form-field>
         </div>
       </div>
@@ -25,24 +39,37 @@
         <div class="col-md-6">
           <nb-form-field class="mt-3">
             <label class="form-label" for="capacity">Sức chứa</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập sức chứa..." id="capacity">
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập sức chứa..." id="capacity"
+              formControlName="capacity">
+            <div
+              *ngIf="addRoomForm.get('capacity')?.invalid && (addRoomForm.get('capacity')?.dirty || addRoomForm.get('capacity')?.touched)">
+              <small class="text-danger" *ngIf="addRoomForm.get('capacity')?.errors?.required">Sức chứa là bắt
+                buộc.</small>
+              <small class="text-danger" *ngIf="addRoomForm.get('capacity')?.errors?.pattern">Sức chứa phải là
+                số.</small>
+            </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field class="mt-3">
-            <label for="roomStatus" class="form-label">Trạng thái</label>
-            <nb-select status="basic" placeholder="Chọn trạng thái..." id="roomStatus">
+            <p class="form-label">Trạng thái</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn trạng thái..." id="roomStatus"
+              formControlName="roomStatus">
               <nb-option value="0">Đang Hoạt động</nb-option>
               <nb-option value="1">Không hoạt động</nb-option>
             </nb-select>
+            <div
+              *ngIf="addRoomForm.get('roomStatus')?.invalid && (addRoomForm.get('roomStatus')?.dirty || addRoomForm.get('roomStatus')?.touched)">
+              <small class="text-danger" *ngIf="addRoomForm.get('roomStatus')?.errors?.required">Trạng thái là bắt
+                buộc.</small>
+            </div>
           </nb-form-field>
         </div>
       </div>
-      <div class="mt-3">
-        <button nbButton hero status="primary">Thêm mới</button>
-        <button type="button" class="btn btn-secondary mx-2">
-          <a class="text-decoration-none text-white" routerLink="/pages/room">Hủy</a>
-        </button>
+      <div class="mt-3 d-flex column-gap-3">
+        <button nbButton hero status="primary" [disabled]="addRoomForm.invalid">Thêm mới</button>
+        <button nbButton hero status="success" type="reset">Reset</button>
+        <a nbButton status="basic" routerLink="/pages/room">Quay lại</a>
       </div>
     </form>
   </nb-card-body>

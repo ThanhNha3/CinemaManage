@@ -3,40 +3,57 @@
     <h3 class="fw-bold fs-5">Chỉnh sửa vé phim</h3>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="editTicketForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-6">
           <nb-form-field>
             <label class="form-label" for="price">Giá vé</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập tên phòng chiếu..." id="price">
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập giá vé..." id="price"
+              formControlName="price">
+            <div
+              *ngIf="editTicketForm.get('price')?.invalid && (editTicketForm.get('price')?.dirty || editTicketForm.get('price')?.touched)">
+              <small class="text-danger" *ngIf="editTicketForm.get('price')?.errors?.required">Giá vé là bắt
+                buộc.</small>
+              <small class="text-danger" *ngIf="editTicketForm.get('price')?.errors?.pattern">Giá vé phải là
+                số.</small>
+            </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label for="type" class="form-label">Mã suất chiếu</label>
-            <nb-select status="basic" placeholder="Chọn suất chiếu..." id="type">
+            <p class="form-label">Mã suất chiếu</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn suất chiếu..." id="type" formControlName="screenId">
               <nb-option value="0">SC01</nb-option>
               <nb-option value="1">SC02</nb-option>
             </nb-select>
+            <div
+              *ngIf="editTicketForm.get('screenId')?.invalid && (editTicketForm.get('screenId')?.dirty || editTicketForm.get('screenId')?.touched)">
+              <small class="text-danger" *ngIf="editTicketForm.get('screenId')?.errors?.required">Mã suất chiếu là bắt
+                buộc.</small>
+            </div>
           </nb-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <nb-form-field class="mt-3">
-            <label for="seatId" class="form-label">Mã ghế</label>
-            <nb-select status="basic" placeholder="Chọn trạng thái..." id="seatId">
+            <p class="form-label">Mã ghế</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn ghế..." id="seatId" formControlName="seatId">
               <nb-option value="0">T001</nb-option>
               <nb-option value="1">T002</nb-option>
             </nb-select>
+            <div
+              *ngIf="editTicketForm.get('seatId')?.invalid && (editTicketForm.get('seatId')?.dirty || editTicketForm.get('seatId')?.touched)">
+              <small class="text-danger" *ngIf="editTicketForm.get('seatId')?.errors?.required">Mã ghế là bắt
+                buộc.</small>
+            </div>
           </nb-form-field>
         </div>
       </div>
-      <div class="mt-3">
-        <button nbButton hero status="primary">Chỉnh sửa</button>
-        <button type="button" class="btn btn-secondary mx-2">
-          <a class="text-decoration-none text-white" routerLink="/pages/ticket">Hủy</a>
-        </button>
+      <div class="mt-3 d-flex column-gap-3">
+        <button nbButton hero status="primary" [disabled]="editTicketForm.invalid">Chỉnh sửa</button>
+        <button nbButton hero status="success" type="reset">Reset</button>
+        <a nbButton status="basic" routerLink="/pages/ticket">Quay lại</a>
       </div>
     </form>
   </nb-card-body>

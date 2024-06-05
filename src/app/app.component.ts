@@ -1,16 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {LOCALSTORAGE_KEY, ROUTER_CONFIG} from "./@core/config";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { LOCALSTORAGE_KEY, ROUTER_CONFIG } from './@core/config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-app',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-
-  constructor(
-    private router: Router,
-  ) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     // this.checkUrl();
@@ -21,7 +18,9 @@ export class AppComponent implements OnInit {
     if (userSession) {
       const basePathRoute = location.pathname;
       if (basePathRoute.includes('/auth/login')) {
-        this.router.navigate([ROUTER_CONFIG.pages], {replaceUrl: true}).then();
+        this.router
+          .navigate([ROUTER_CONFIG.pages], { replaceUrl: true })
+          .then();
       }
     } else {
       this.router.navigate([ROUTER_CONFIG.auth.login]).then();

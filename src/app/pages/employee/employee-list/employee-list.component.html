@@ -1,7 +1,9 @@
-
 <nb-card>
   <nb-card-header class="d-flex justify-content-end align-items-center">
-    <a nbButton outline status="primary" routerLink="/pages/employee/add">Thêm mới</a>
+    <a nbButton outline status="primary" routerLink="/pages/employee/add">
+      <nb-icon icon="plus-outline"></nb-icon>
+      Thêm mới
+    </a>
   </nb-card-header>
   <nb-card-body>
     <div class="table-responsive text-center">
@@ -32,9 +34,8 @@
                 class="d-inline-flex justify-content-center align-items-center p-2 me-2">
                 <nb-icon icon="edit-outline" status="control" class="icon"></nb-icon>
               </a>
-              <a nbButton status="danger"
-                class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1"
-                (click)="confirmDelete()">
+              <a nbButton status="danger" (click)="onDeleteRequested()"
+                class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1">
                 <nb-icon icon="trash-outline" status="control" class="custom-icon"></nb-icon>
               </a>
             </td>

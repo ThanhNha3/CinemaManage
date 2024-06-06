@@ -4,19 +4,6 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RevenueComponent } from './revenue/revenue.component';
-import { AddRevenueComponent } from './revenue/addRevenue/addRevenue.component';
-import { EditRevenueComponent } from './revenue/editRevenue/editRevenue.component';
-import { CategoryComponent } from './category/category.component';
-import { AddComponent } from './category/add/add.component';
-import { EditComponent } from './category/edit/edit.component';
-import { DeleteComponent } from './category/delete/delete.component';
-import { FlimComponent } from './flim/flim.component';
-import { AddflimComponent } from './flim/addflim/addflim.component';
-import { EditfilmComponent } from './flim/editfilm/editfilm.component';
-import { DeletefilmComponent } from './flim/deletefilm/deletefilm.component';
-import { GiftComponent } from './gift/gift.component';
-import { AddGiftComponent } from './gift/add-gift/add-gift.component';
-import { EditGiftComponent } from './gift/edit-gift/edit-gift.component';
 import { ScreeningComponent } from './screening/screening.component';
 import { ScreeningAddComponent } from './screening/screening-add/screening-add.component';
 import { ScreeningEditComponent } from './screening/screening-edit/screening-edit.component';
@@ -29,6 +16,12 @@ import { AddRoomComponent } from './room/add-room/add-room.component';
 import { EditTicketComponent } from './ticket/edit-ticket/edit-ticket.component';
 import { AddTicketComponent } from './ticket/add-ticket/add-ticket.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { MovieComponent } from './movie/movie.component';
+import { MovieAddComponent } from './movie/movie-add/movie-add.component';
+import { MovieEditComponent } from './movie/movie-edit/movie-edit.component';
+import { GenreComponent } from './genre/genre.component';
+import { GenreAddComponent } from './genre/genre-add/genre-add.component';
+import { GenreEditComponent } from './genre/genre-edit/genre-edit.component';
 const routes: Routes = [
   {
     path: '',
@@ -42,102 +35,54 @@ const routes: Routes = [
       {
         path: 'revenue',
         component: RevenueComponent,
-        data: { breadcrumb: 'Quản lí doanh thu' },
-      },
-      {
-        path: 'revenue/add',
-        component: AddRevenueComponent,
-        data: { breadcrumb: 'Quản lí doanh thu' },
-      },
-      {
-        path: 'revenue/edit/:id',
-        component: EditRevenueComponent,
-        data: { breadcrumb: 'Quản lí doanh thu' },
-      },
-      {
-        path: 'gift',
-        component: GiftComponent,
-        data: { breadcrumb: 'Quản lí quà tặng' },
-      },
-      {
-        path: 'gift/add',
-        component: AddGiftComponent,
-        data: { breadcrumb: 'Quản lí quà tặng' },
-      },
-      {
-        path: 'gift/edit/:id',
-        component: EditGiftComponent,
-        data: { breadcrumb: 'Quản lí quà tặng' },
-      },
-      {
-        path: 'cate',
-        component: CategoryComponent,
-        data: { breadcrumb: 'category' },
-      },
-      {
-        path: 'cate/add',
-        component: AddComponent,
-        data: { breadcrumb: 'category' },
-      },
-      {
-        path: 'cate/edit',
-        component: EditComponent,
-        data: { breadcrumb: 'category' },
-      },
-      {
-        path: 'cate/delete',
-        component: DeleteComponent,
-        data: { breadcrumb: 'category' },
-      },
-      {
-        path: 'film',
-        component: FlimComponent,
-        data: { breadcrumb: 'film' },
-      },
-      {
-        path: 'film/add',
-        component: AddflimComponent,
-        data: { breadcrumb: 'film' },
-      },
-      {
-        path: 'film/edit',
-        component: EditfilmComponent,
-        data: { breadcrumb: 'film' },
-      },
-      {
-        path: 'film/delete',
-        component: DeletefilmComponent,
-        data: { breadcrumb: 'film' },
+        data: { breadcrumb: 'Doanh thu' },
+        // children: [
+        //   {
+        //     path: '/',
+        //     component: AddRevenueComponent,
+        //     data: { breadcrumb: 'Chart' },
+        //   },
+        // ],
       },
       {
         path: 'screening',
-        component: ScreeningComponent,
-        data: { breadcrumb: 'Suất chiếu phim' },
-      },
-      {
-        path: 'screening/add',
-        component: ScreeningAddComponent,
-        data: { breadcrumb: 'Thêm suất chiếu' },
-      },
-      {
-        path: 'screening/edit',
-        component: ScreeningEditComponent,
-        data: { breadcrumb: 'Chỉnh sửa suất chiếu' },
+        data: { breadcrumb: 'Suất chiếu' },
+        children: [
+          {
+            path: '',
+            component: ScreeningComponent,
+          },
+          {
+            path: 'add',
+            component: ScreeningAddComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+          {
+            path: 'edit',
+            component: ScreeningEditComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
+          },
+        ],
       },
       {
         path: 'employee',
-        component: EmployeeComponent,
         data: { breadcrumb: 'Nhân viên' },
-      },
-      {
-        path: 'employee/add',
-        component: EmployeeAddComponent,
-        data: { breadcrumb: 'Thêm nhân viên' },
-      },
-      {
-        path: 'employee/edit',
-        component: EmployeeEditComponent,
-        data: { breadcrumb: 'Chỉnh sửa thông tin nhân viên' },
+        children: [
+          {
+            path: '',
+            component: EmployeeComponent,
+          },
+          {
+            path: 'add',
+            component: EmployeeAddComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+          {
+            path: 'edit',
+            component: EmployeeEditComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
+          },
+        ],
       },
       {
         path: 'room',
@@ -148,14 +93,14 @@ const routes: Routes = [
             component: RoomComponent,
           },
           {
-            path: 'edit/:id',
-            component: EditRoomComponent,
-            data: { breadcrumb: 'Chỉnh sửa' },
-          },
-          {
             path: 'add',
             component: AddRoomComponent,
             data: { breadcrumb: 'Thêm mới' },
+          },
+          {
+            path: 'edit/:id',
+            component: EditRoomComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
           },
         ],
       },
@@ -168,14 +113,54 @@ const routes: Routes = [
             component: TicketComponent,
           },
           {
+            path: 'add',
+            component: AddTicketComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+          {
             path: 'edit/:id',
             component: EditTicketComponent,
             data: { breadcrumb: 'Chỉnh sửa' },
           },
+        ],
+      },
+      {
+        path: 'genre',
+        data: { breadcrumb: 'Thể loại' },
+        children: [
+          {
+            path: '',
+            component: GenreComponent,
+          },
           {
             path: 'add',
-            component: AddTicketComponent,
+            component: GenreAddComponent,
             data: { breadcrumb: 'Thêm mới' },
+          },
+          {
+            path: 'edit/:id',
+            component: GenreEditComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
+          },
+        ],
+      },
+      {
+        path: 'movie',
+        data: { breadcrumb: 'Phim' },
+        children: [
+          {
+            path: '',
+            component: MovieComponent,
+          },
+          {
+            path: 'add',
+            component: MovieAddComponent,
+            data: { breadcrumb: 'Thêm mới' },
+          },
+          {
+            path: 'edit/:id',
+            component: MovieEditComponent,
+            data: { breadcrumb: 'Chỉnh sửa' },
           },
         ],
       },

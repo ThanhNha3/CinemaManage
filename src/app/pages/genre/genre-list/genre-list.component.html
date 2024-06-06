@@ -1,6 +1,6 @@
 <nb-card>
   <nb-card-header class="d-flex justify-content-end align-items-center">
-    <a nbButton outline status="primary" routerLink="/pages/ticket/add">
+    <a nbButton outline status="primary" routerLink="/pages/genre/add">
       <nb-icon icon="plus-outline"></nb-icon>
       Thêm mới
     </a>
@@ -10,21 +10,20 @@
       <table class="table table-hover align-middle">
         <thead>
           <tr>
-            <th scope="col">Mã vé</th>
-            <th scope="col">Mã suất chiếu</th>
-            <th scope="col">Mã ghế</th>
-            <th scope="col">Giá vé</th>
+            <th scope="col">#</th>
+            <th scope="col">Thẻ loại</th>
+            <th scope="col">Mô tả</th>
             <th scope="col">Thao tác</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
-            <td>SC1</td>
-            <td>T001</td>
-            <td>50000</td>
+            <td>Hoạt hình</td>
+            <td class="text-truncate-custom" style="max-width: 400px;">Phim hoạt hình hay phim hoạt họa là một hình thức
+              sử dụng ảo ảnh quang học về sự chuyển động do nhiều hình ảnh tĩnh được chiếu tiếp diễn liên tục.</td>
             <td>
-              <a nbButton status="info" routerLink="/pages/ticket/edit/1"
+              <a nbButton status="info" routerLink="/pages/genre/edit/1"
                 class="d-inline-flex justify-content-center align-items-center p-2 me-2">
                 <nb-icon icon="edit-outline" status="control" class="icon"></nb-icon>
               </a>

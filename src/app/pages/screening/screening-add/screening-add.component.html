@@ -1,64 +1,51 @@
 <nb-card>
   <nb-card-header>
-    <h3 class="fw-bold fs-5">Thêm mới vé phim</h3>
+    <h3 class="fw-bold fs-5">Thêm mới suất chiếu</h3>
   </nb-card-header>
   <nb-card-body>
     <form>
       <div class="row mb-3">
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Tên phim</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập tên phim..." id="">
+            <p class="form-label">Phim</p>
+            <nb-select status="basic" fullWidth placeholder="Chọn phim...">
+              <nb-option value="1">Phim 1</nb-option>
+              <nb-option value="2">Phim 2</nb-option>
+              <nb-option value="3">Phim 3</nb-option>
+              <nb-option value="4">Phim 4</nb-option>
+            </nb-select>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Giá vé</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập giá vé" id="">
-          </nb-form-field>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <nb-form-field>
-            <label for="type" class="form-label">Phòng</label>
-            <nb-select status="basic" placeholder="Chọn rạp chiếu..." id="">
+            <label for="type" class="form-label">Phòng chiếu</label>
+            <nb-select status="basic" fullWidth placeholder="Chọn rạp chiếu..." id="">
               <nb-option value="0">Rạp 1</nb-option>
               <nb-option value="1">Rạp 2</nb-option>
             </nb-select>
           </nb-form-field>
         </div>
-        <div class="col-md-6">
-          <nb-form-field>
-            <label for="seatId" class="form-label">Nhân viên trực</label>
-            <nb-select status="basic" placeholder="Chọn nhân viên trực phòng..." id="">
-              <nb-option value="0">Trân</nb-option>
-              <nb-option value="1">Duy</nb-option>
-              <nb-option value="1">Nhả</nb-option>
-            </nb-select>
-          </nb-form-field>
-        </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Thời gian chiếu</label>
-            <input type="time" nbInput status="basic" placeholder="" id="">
+            <label for="date" class="form-label">Ngày chiếu</label>
+            <input nbInput fullWidth [nbDatepicker]="datepicker" id="date" placeholder="Chọn ngày chiếu...">
+            <nb-datepicker #datepicker></nb-datepicker>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Thời gian kết thúc</label>
-            <input type="time" nbInput status="basic" placeholder="" id="">
+            <label for="time" class="form-label">Giờ chiếu</label>
+            <input nbInput fullWidth [nbTimepicker]="timepicker" id="time" placeholder="Chọn giờ...">
+            <nb-timepicker #timepicker withSeconds></nb-timepicker>
           </nb-form-field>
         </div>
-
       </div>
-      <div class="mt-3">
+      <div class="mt-3 d-flex column-gap-3">
         <button nbButton hero status="primary">Thêm mới</button>
-        <button type="button" class="btn btn-secondary mx-2">
-          <a class="text-decoration-none text-white" routerLink="/pages/screening">Hủy</a>
-        </button>
+        <button nbButton hero status="success" type="reset">Reset</button>
+        <a nbButton status="basic" routerLink="/pages/screening">Quay lại</a>
       </div>
     </form>
   </nb-card-body>

@@ -11,24 +11,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
   },
   {
-    title: 'Quản lí doanh thu',
-    icon: 'home-outline',
-    link: '/pages/revenue',
-  },
-  {
-    title: 'Quản lí quà tặng',
-    icon: 'home-outline',
-    link: '/pages/gift',
-  },
-  {
-    title: 'Danh Mục',
-    icon: 'book',
-    link: '/pages/cate',
+    title: 'Thể loại',
+    icon: 'book-outline',
+    link: '/pages/genre',
   },
   {
     title: 'Phim',
-    icon: 'film',
-    link: '/pages/film',
+    icon: 'film-outline',
+    link: '/pages/movie',
   },
   { title: 'Phòng chiếu', icon: 'video-outline', link: '/pages/room' },
   {
@@ -38,12 +28,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Suất Chiếu Phim',
-    icon: 'video-outline',
+    icon: 'tv-outline',
     link: '/pages/screening',
   },
   {
     title: 'Nhân viên',
     icon: 'people-outline',
     link: '/pages/employee',
+  },
+  {
+    title: 'Doanh thu',
+    icon: 'pie-chart-outline',
+    link: '/pages/revenue',
   },
 ];

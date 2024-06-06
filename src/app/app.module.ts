@@ -13,6 +13,7 @@ import {
   NbWindowModule,
   NbToastrModule,
   NbChatModule,
+  NbTimepickerModule,
 } from '@nebular/theme';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +32,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
+    NbTimepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),

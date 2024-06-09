@@ -15,7 +15,10 @@ export class MovieEditComponent {
     this.editMovieForm = new FormGroup({
       name: new FormControl('', Validators.required),
       type: new FormControl('', [Validators.required]),
-      capacity: new FormControl('', [Validators.required]),
+      capacity: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^-?(0|[1-9]\d*)?$/),
+      ]),
       director: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
     });

@@ -16,11 +16,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PaginatorModule } from '../@theme/components/paginator/paginator.module';
 import { ScreeningComponent } from './screening/screening.component';
-import { ScreeningListComponent } from './screening/screening-list/screening-list.component';
 import { ScreeningAddComponent } from './screening/screening-add/screening-add.component';
 import { ScreeningEditComponent } from './screening/screening-edit/screening-edit.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
 import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.component';
 import { RoomComponent } from './room/room.component';
@@ -66,11 +64,9 @@ import { NbMomentDateModule } from '@nebular/moment';
     AddRevenueComponent,
     EditRevenueComponent,
     ScreeningComponent,
-    ScreeningListComponent,
     ScreeningAddComponent,
     ScreeningEditComponent,
     EmployeeComponent,
-    EmployeeListComponent,
     EmployeeAddComponent,
     EmployeeEditComponent,
     RoomComponent,

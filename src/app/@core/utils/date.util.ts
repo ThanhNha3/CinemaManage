@@ -78,4 +78,16 @@ export class DateUtil {
   public static UTCDate(year, month, date = 1, hours = 0, minute = 0, second = 0, ms = 0) {
     return new Date(Date.UTC(year, month, date, hours, minute, second, ms));
   }
+
+  public static formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const seconds = ('0' + date.getSeconds()).slice(-2);
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  }
 }

@@ -1,56 +1,38 @@
 <nb-card>
   <nb-card-header>
-    <h3 class="fw-bold fs-5">Thêm mới vé phim</h3>
+    <h3 class="fw-bold fs-5">Chỉnh sửa người dùng</h3>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="userEdit" (ngSubmit)="onSubmit()">
       <div class="row mb-3">
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Tên nhân viên</label>
-            <input type="text" nbInput status="basic" value="Hồ Dư Mai Trân" id="">
+            <label class="form-label" for="username">Tên nhân viên</label>
+            <input type="text" nbInput formControlName="username" status="basic" placeholder="Nhập tên nhân viên..." id="username">
           </nb-form-field>
+          <small class="text-danger" *ngIf="userEdit.get('username')?.invalid && (userEdit.get('username')?.dirty || userEdit.get('username')?.touched)">
+            <ng-container *ngIf="userEdit.get('username')?.errors?.required">
+              Vui lòng nhập tên nhân viên
+            </ng-container>
+          </small>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label class="form-label" for="price">Email</label>
-            <input type="text" nbInput status="basic" value="tran123@gmail.com" id="">
+            <label class="form-label" for="email">Email</label>
+            <input type="text" nbInput formControlName="email" status="basic" placeholder="Nhập email..." id="email">
           </nb-form-field>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <nb-form-field>
-            <label class="form-label" for="price">Số điện thoại</label>
-            <input type="text" nbInput status="basic" value="098653588" id="">
-          </nb-form-field>
-        </div>
-        <div class="col-md-6">
-          <nb-form-field>
-            <label class="form-label" for="price">Mức lương</label>
-            <input type="number" nbInput status="basic" value="6000000" id="">
-          </nb-form-field>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <nb-form-field>
-            <label for="type" class="form-label">Vai trò</label>
-            <nb-select status="basic" placeholder="Nhân viên" id="">
-              <nb-option value="0">Quản lý</nb-option>
-              <nb-option value="1">Nhân viên</nb-option>
-            </nb-select>
-          </nb-form-field>
-        </div>
-        <div class="col-md-6">
-          <nb-form-field>
-            <label class="form-label" for="price">Ngày nhận việc</label>
-            <input type="date" nbInput status="basic" value="2023-12-12" id="">
-          </nb-form-field>
+          <small class="text-danger" *ngIf="userEdit.get('email')?.invalid && (userEdit.get('email')?.dirty || userEdit.get('email')?.touched)">
+            <ng-container *ngIf="userEdit.get('email')?.errors?.required">
+              Vui lòng nhập email
+            </ng-container>
+            <ng-container *ngIf="userEdit.get('email')?.errors?.email">
+              Email không hợp lệ
+            </ng-container>
+          </small>
         </div>
       </div>
       <div class="mt-3 d-flex column-gap-3">
-        <button nbButton hero status="primary">Chỉnh sửa</button>
+        <button nbButton hero status="primary">Lưu</button>
         <button nbButton hero status="success" type="reset">Reset</button>
         <a nbButton status="basic" routerLink="/pages/employee">Quay lại</a>
       </div>

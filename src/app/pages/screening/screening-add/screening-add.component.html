@@ -3,47 +3,55 @@
     <h3 class="fw-bold fs-5">Thêm mới suất chiếu</h3>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="screeningAdd" (ngSubmit)="onSubmit()">
       <div class="row mb-3">
         <div class="col-md-6">
           <nb-form-field>
-            <p class="form-label">Phim</p>
-            <nb-select status="basic" fullWidth placeholder="Chọn phim...">
-              <nb-option value="1">Phim 1</nb-option>
-              <nb-option value="2">Phim 2</nb-option>
-              <nb-option value="3">Phim 3</nb-option>
-              <nb-option value="4">Phim 4</nb-option>
+            <label for="movieId" class="form-label">Phim</label>
+            <nb-select status="basic" fullWidth placeholder="Chọn phim..." formControlName="movieId">
+              <nb-option *ngFor="let movie of movieList" [value]="movie.id">{{ movie.name }}</nb-option>
             </nb-select>
+            <p class="text-danger mt-2" *ngIf="screeningAdd.get('movieId')?.invalid && (screeningAdd.get('movieId')?.dirty || screeningAdd.get('movieId')?.touched)">
+              Vui lòng chọn phim!
+            </p>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label for="type" class="form-label">Phòng chiếu</label>
-            <nb-select status="basic" fullWidth placeholder="Chọn rạp chiếu..." id="">
-              <nb-option value="0">Rạp 1</nb-option>
-              <nb-option value="1">Rạp 2</nb-option>
+            <label for="roomId" class="form-label">Phòng chiếu</label>
+            <nb-select status="basic" fullWidth placeholder="Chọn rạp chiếu..." formControlName="roomId">
+              <nb-option *ngFor="let room of roomList" [value]="room.id">{{ room.name }}</nb-option>
             </nb-select>
+            <p class="text-danger mt-2" *ngIf="screeningAdd.get('roomId')?.invalid && (screeningAdd.get('roomId')?.dirty || screeningAdd.get('roomId')?.touched)">
+              Vui lòng chọn rạp chiếu!
+            </p>
           </nb-form-field>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
           <nb-form-field>
-            <label for="date" class="form-label">Ngày chiếu</label>
-            <input nbInput fullWidth [nbDatepicker]="datepicker" id="date" placeholder="Chọn ngày chiếu...">
-            <nb-datepicker #datepicker></nb-datepicker>
+            <label for="startTime" class="form-label">Ngày giờ bắt đầu</label>
+            <input nbInput fullWidth placeholder="Ngày giờ bắt đầu" formControlName="startTime" [nbDatepicker]="start">
+            <nb-date-timepicker withSeconds #start></nb-date-timepicker>
+            <p class="text-danger mt-2" *ngIf="screeningAdd.get('startTime')?.invalid && (screeningAdd.get('startTime')?.dirty || screeningAdd.get('startTime')?.touched)">
+              Vui lòng chọn ngày giờ bắt đầu!
+            </p>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <label for="time" class="form-label">Giờ chiếu</label>
-            <input nbInput fullWidth [nbTimepicker]="timepicker" id="time" placeholder="Chọn giờ...">
-            <nb-timepicker #timepicker withSeconds></nb-timepicker>
+            <label for="endTime" class="form-label">Ngày giờ kết thúc</label>
+            <input nbInput fullWidth placeholder="Ngày giờ kết thúc" formControlName="endTime" [nbDatepicker]="end">
+            <nb-date-timepicker withSeconds #end></nb-date-timepicker>
+            <p class="text-danger mt-2" *ngIf="screeningAdd.get('endTime')?.invalid && (screeningAdd.get('endTime')?.dirty || screeningAdd.get('endTime')?.touched)">
+              Vui lòng chọn ngày giờ kết thúc!
+            </p>
           </nb-form-field>
         </div>
       </div>
       <div class="mt-3 d-flex column-gap-3">
-        <button nbButton hero status="primary">Thêm mới</button>
+        <button nbButton hero status="primary" type="submit" [disabled]="screeningAdd.invalid">Thêm mới</button>
         <button nbButton hero status="success" type="reset">Reset</button>
         <a nbButton status="basic" routerLink="/pages/screening">Quay lại</a>
       </div>

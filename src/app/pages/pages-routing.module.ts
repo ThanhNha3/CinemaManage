@@ -58,7 +58,7 @@ const routes: Routes = [
             data: { breadcrumb: 'Thêm mới' },
           },
           {
-            path: 'edit',
+            path: 'edit/:id',
             component: ScreeningEditComponent,
             data: { breadcrumb: 'Chỉnh sửa' },
           },
@@ -78,7 +78,7 @@ const routes: Routes = [
             data: { breadcrumb: 'Thêm mới' },
           },
           {
-            path: 'edit',
+            path: 'edit/:id',
             component: EmployeeEditComponent,
             data: { breadcrumb: 'Chỉnh sửa' },
           },

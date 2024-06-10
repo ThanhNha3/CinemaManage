@@ -1,52 +1,48 @@
 <nb-card>
   <nb-card-header>
-    <h3 class="fw-bold fs-5">Thêm mới vé phim</h3>
+    <h3 class="fw-bold fs-5">Thêm mới người dùng</h3>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="userAdd" (ngSubmit)="onSubmit()">
       <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <nb-form-field>
-            <label class="form-label" for="price">Tên nhân viên</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập tên nhân viên..." id="">
+            <label class="form-label" for="username">Tên nhân viên</label>
+            <input type="text" nbInput formControlName="username" status="basic" placeholder="Nhập tên nhân viên..." id="username">
           </nb-form-field>
+          <small class="text-danger" *ngIf="userAdd.get('username')?.invalid && (userAdd.get('username')?.dirty || userAdd.get('username')?.touched)">
+            <ng-container *ngIf="userAdd.get('username')?.errors?.required">
+              Vui lòng nhập tên nhân viên
+            </ng-container>
+          </small>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <nb-form-field>
-            <label class="form-label" for="price">Email</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập email..." id="">
+            <label class="form-label" for="email">Email</label>
+            <input type="text" nbInput formControlName="email" status="basic" placeholder="Nhập email..." id="email">
           </nb-form-field>
+          <small class="text-danger" *ngIf="userAdd.get('email')?.invalid && (userAdd.get('email')?.dirty || userAdd.get('email')?.touched)">
+            <ng-container *ngIf="userAdd.get('email')?.errors?.required">
+              Vui lòng nhập email
+            </ng-container>
+            <ng-container *ngIf="userAdd.get('email')?.errors?.email">
+              Email không hợp lệ
+            </ng-container>
+          </small>
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <nb-form-field>
-            <label class="form-label" for="price">Số điện thoại</label>
-            <input type="text" nbInput status="basic" placeholder="Nhập số điện thoại..." id="">
+            <label class="form-label" for="password">Mật khẩu</label>
+            <input type="text" nbInput formControlName="password" status="basic" placeholder="Mật khẩu..." id="password">
           </nb-form-field>
-        </div>
-        <div class="col-md-6">
-          <nb-form-field>
-            <label class="form-label" for="price">Mức lương</label>
-            <input type="number" nbInput status="basic" placeholder="Nhập mức lương..." id="">
-          </nb-form-field>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <nb-form-field>
-            <label for="type" class="form-label">Vai trò</label>
-            <nb-select status="basic" placeholder="Chọn rạp chiếu..." id="">
-              <nb-option value="0">Quản lý</nb-option>
-              <nb-option value="1">Nhân viên</nb-option>
-            </nb-select>
-          </nb-form-field>
-        </div>
-        <div class="col-md-6">
-          <nb-form-field>
-            <label class="form-label" for="price">Ngày nhận việc</label>
-            <input type="date" nbInput status="basic" placeholder="" id="">
-          </nb-form-field>
+          <small class="text-danger" *ngIf="userAdd.get('password')?.invalid && (userAdd.get('password')?.dirty || userAdd.get('password')?.touched)">
+            <ng-container *ngIf="userAdd.get('password')?.errors?.required">
+              Vui lòng nhập mật khẩu
+            </ng-container>
+            <ng-container *ngIf="userAdd.get('password')?.errors?.minlength">
+              Mật khẩu phải có ít nhất 8 ký tự
+            </ng-container>
+          </small>
         </div>
       </div>
       <div class="mt-3 d-flex column-gap-3">

@@ -1,0 +1,61 @@
+<nb-card>
+  <nb-card-header class="d-flex justify-content-end align-items-center">
+    <a nbButton outline status="primary" routerLink="/pages/screening/add">
+      <nb-icon icon="plus-outline"></nb-icon>
+      Thêm mới
+    </a>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="table-responsive text-center">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên phim</th>
+            <th scope="col">Phòng chiếu</th>
+            <th scope="col">Ngày chiếu</th>
+            <th scope="col">Thời gian chiếu</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="screeningList.length > 0">
+          <tr *ngFor="let item of screeningList">
+            <td>{{ item.id }}</td>
+            <td>{{ item.movieName }}</td>
+            <td>{{ item.roomName }}</td>
+            <td>{{ item.startTime }}</td>
+            <td>{{ item.endTime }}</td>
+            <td>
+              <a
+                nbButton
+                status="info"
+                routerLink="/pages/screening/edit/{{ item.id }}"
+                class="d-inline-flex justify-content-center align-items-center p-2 me-2"
+              >
+                <nb-icon
+                  icon="edit-outline"
+                  status="control"
+                  class="icon"
+                ></nb-icon>
+              </a>
+              <a
+                nbButton
+                status="danger"
+                (click)="openDeleteConfirmation(item.id)"
+                class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1"
+              >
+                <nb-icon
+                  icon="trash-outline"
+                  status="control"
+                  class="custom-icon"
+                ></nb-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ngx-paginator [apiUrl]="apiUrl" [current_page]="currentPage" [total_page]="totalPage"
+        (dataList)="updateData($event)"></ngx-paginator>
+    </div>
+  </nb-card-body>
+</nb-card>

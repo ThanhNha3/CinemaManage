@@ -10,34 +10,34 @@ import { environment } from '@environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class GenreService extends ApiService {
+export class MovieService extends ApiService {
   constructor(private _http: HttpClient) {
     super(_http);
   }
 
   get(): Observable<any> {
-    return this._http.get(environment.apiBaseUrl + API_ENDPOINT.genre);
+    return this._http.get(environment.apiBaseUrl + API_ENDPOINT.movie);
   }
 
   getByid(id: number): Observable<any> {
     return this._http.get(
-      environment.apiBaseUrl + API_ENDPOINT.genre + '/' + id
+      environment.apiBaseUrl + API_ENDPOINT.movie + '/' + id
     );
   }
 
   create(data): Observable<any> {
-    return this._http.post(environment.apiBaseUrl + API_ENDPOINT.genre, data);
+    return this._http.post(environment.apiBaseUrl + API_ENDPOINT.movie, data);
   }
 
   remove(id: number) {
     return this._http.delete(
-      environment.apiBaseUrl + API_ENDPOINT.genre + '/' + id
+      environment.apiBaseUrl + API_ENDPOINT.movie + '/' + id
     );
   }
 
   edit(id: number, data): Observable<any> {
     return this._http.put(
-      environment.apiBaseUrl + API_ENDPOINT.genre + '/' + id,
+      environment.apiBaseUrl + API_ENDPOINT.movie + '/' + id,
       data
     );
   }

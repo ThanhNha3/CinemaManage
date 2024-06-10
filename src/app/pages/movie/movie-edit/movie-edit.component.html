@@ -34,28 +34,31 @@
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <p class="form-label">Loại phòng chiếu</p>
+            <p class="form-label">Thể loại</p>
             <nb-select
               fullWidth
               status="basic"
-              placeholder="Chọn loại phòng..."
-              id="type"
-              formControlName="type"
+              placeholder="Chọn thể loại..."
+              id="genreId"
+              formControlName="genreId"
             >
-              <nb-option value="0">Phòng chiếu 2D</nb-option>
-              <nb-option value="1">Phòng chiếu 3D</nb-option>
+              <nb-option
+                *ngFor="let item of genres; index as i"
+                [value]="item.id"
+                >{{ item.name }}</nb-option
+              >
             </nb-select>
             <div
               *ngIf="
-                editMovieForm.get('type')?.invalid &&
-                (editMovieForm.get('type')?.dirty ||
-                  editMovieForm.get('type')?.touched)
+                editMovieForm.get('genreId')?.invalid &&
+                (editMovieForm.get('genreId')?.dirty ||
+                  editMovieForm.get('genreId')?.touched)
               "
             >
               <small
                 class="text-danger"
-                *ngIf="editMovieForm.get('type')?.errors?.required"
-                >Loại phòng chiếu là bắt buộc</small
+                *ngIf="editMovieForm.get('genreId')?.errors?.required"
+                >Thể loại</small
               >
             </div>
           </nb-form-field>
@@ -64,31 +67,31 @@
       <div class="row">
         <div class="col-md-6">
           <nb-form-field class="mt-3">
-            <label class="form-label" for="capacity">Thời lượng</label>
+            <label class="form-label" for="duration">Thời lượng</label>
             <input
               type="text"
               nbInput
               fullWidth
               status="basic"
               placeholder="Nhập thời lượng (vd: 130)...."
-              id="capacity"
-              formControlName="capacity"
+              id="duration"
+              formControlName="duration"
             />
             <div
               *ngIf="
-                editMovieForm.get('capacity')?.invalid &&
-                (editMovieForm.get('capacity')?.dirty ||
-                  editMovieForm.get('capacity')?.touched)
+                editMovieForm.get('duration')?.invalid &&
+                (editMovieForm.get('duration')?.dirty ||
+                  editMovieForm.get('duration')?.touched)
               "
             >
               <small
                 class="text-danger"
-                *ngIf="editMovieForm.get('capacity')?.errors?.required"
+                *ngIf="editMovieForm.get('duration')?.errors?.required"
                 >Thời lượng là bắt buộc</small
               >
               <small
                 class="text-danger"
-                *ngIf="editMovieForm.get('capacity')?.errors?.pattern"
+                *ngIf="editMovieForm.get('duration')?.errors?.pattern"
                 >Thời lượng phải là số</small
               >
             </div>
@@ -125,7 +128,7 @@
       <div class="row">
         <div class="col-md-12">
           <nb-form-field class="mt-3">
-            <label class="form-label" for="capacity">Mô tả</label>
+            <label class="form-label" for="duration">Mô tả</label>
             <textarea
               type="text"
               nbInput
@@ -161,7 +164,7 @@
           Chỉnh sửa
         </button>
         <button nbButton hero status="success" type="reset">Reset</button>
-        <a nbButton status="basic" routerLink="/pages/room">Quay lại</a>
+        <a nbButton status="basic" routerLink="/pages/movie">Quay lại</a>
       </div>
     </form>
   </nb-card-body>

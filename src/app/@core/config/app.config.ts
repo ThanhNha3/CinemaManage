@@ -1,8 +1,8 @@
-import {IAppConfig} from "../interfaces";
-import {environment} from "@environments/environment";
+import { IAppConfig } from '../interfaces';
+import { environment } from '@environments/environment';
 
 export const APP_CONFIG: IAppConfig = {
-  module: 'NHA-XE-TRUONG-DUNG',
+  module: 'Assignment Angular',
   apiBaseUrl: environment.apiBaseUrl,
   httpStatus: {
     CONTINUE: 100,

@@ -1,61 +1,53 @@
-import {Component, ViewEncapsulation, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {ApiService} from "../../../@core/services/common";
-import {finalize, Observable} from "rxjs";
-import {SpinnerService} from "../spinner/spinner.service";
+import {
+  Component,
+  ViewEncapsulation,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { ApiService } from '../../../@core/services/common';
+import { finalize, Observable } from 'rxjs';
+import { SpinnerService } from '../spinner/spinner.service';
 
 @Component({
   selector: 'ngx-paginator',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.scss']
+  styleUrls: ['./paginator.component.scss'],
 })
 export class PaginatorComponent implements OnInit {
   @Input() apiUrl: string;
   @Input() current_page: number;
-  @Input() last_page: number;
+  @Input() total_page: number;
   @Output() dataList: EventEmitter<any> = new EventEmitter();
   indexPage: number = 1;
-  hasPreviousPage: boolean = true;
-  hasNextPage: boolean = false;
   constructor(
-      private apiService: ApiService,
-      private spinner: SpinnerService,
-  ) {
-  }
+    private apiService: ApiService,
+    private spinner: SpinnerService
+  ) {}
   ngOnInit() {}
 
   goFirstPage() {
-    this.hasPreviousPage = true;
-    this.hasNextPage = false;
     this.indexPage = 1;
     this.getData();
   }
 
   goLastPage() {
-    this.hasPreviousPage = false;
-    this.hasNextPage = true;
-    this.indexPage = this.last_page;
+    this.indexPage = this.total_page;
     this.getData();
   }
 
   goPreviousPage() {
-    if (this.indexPage <= this.last_page && this.indexPage > 1) {
-      this.hasNextPage = false;
+    if (this.indexPage <= this.total_page && this.indexPage > 1) {
       this.indexPage--;
-      if (this.indexPage === 1) {
-        this.hasPreviousPage = true;
-      }
       this.getData();
     }
   }
 
   goNextPage() {
-    if (this.indexPage < this.last_page) {
-      this.hasPreviousPage = false;
+    if (this.indexPage < this.total_page) {
       this.indexPage++;
-      if (this.indexPage === this.last_page) {
-        this.hasNextPage = true;
-      }
       this.getData();
     }
   }
@@ -67,15 +59,15 @@ export class PaginatorComponent implements OnInit {
   getData() {
     this.spinner.show();
     this.getPaginator()
-        .pipe(
-            finalize(() => {
-              this.spinner.hide();
-            }),
-        )
-        .subscribe({
-          next: this.handleSuccess.bind(this),
-          error: this.handleErrors.bind(this),
-        });
+      .pipe(
+        finalize(() => {
+          this.spinner.hide();
+        })
+      )
+      .subscribe({
+        next: this.handleSuccess.bind(this),
+        // error: this.handleErrors.bind(this),
+      });
   }
 
   protected handleSuccess(res) {

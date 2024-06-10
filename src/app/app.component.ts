@@ -10,17 +10,19 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // this.checkUrl();
+    this.checkUrl();
   }
 
   protected checkUrl() {
-    const userSession = localStorage.getItem(LOCALSTORAGE_KEY.token);
+    const userSession = localStorage.getItem(LOCALSTORAGE_KEY.accessToken);
     if (userSession) {
       const basePathRoute = location.pathname;
       if (basePathRoute.includes('/auth/login')) {
         this.router
           .navigate([ROUTER_CONFIG.pages], { replaceUrl: true })
           .then();
+      } else {
+        console.log(1);
       }
     } else {
       this.router.navigate([ROUTER_CONFIG.auth.login]).then();

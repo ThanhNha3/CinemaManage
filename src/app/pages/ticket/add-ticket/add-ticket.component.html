@@ -12,24 +12,24 @@
               formControlName="price">
             <div
               *ngIf="addTicketForm.get('price')?.invalid && (addTicketForm.get('price')?.dirty || addTicketForm.get('price')?.touched)">
-              <small class="text-danger" *ngIf="addTicketForm.get('price')?.errors?.required">Giá vé là bắt
-                buộc.</small>
+              <small class="text-danger" *ngIf="addTicketForm.get('price')?.errors?.required">Vui lòng nhập giá
+                vé</small>
               <small class="text-danger" *ngIf="addTicketForm.get('price')?.errors?.pattern">Giá vé phải là
-                số.</small>
+                số</small>
             </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
-            <p class="form-label">Mã suất chiếu</p>
-            <nb-select fullWidth status="basic" placeholder="Chọn suất chiếu..." id="type" formControlName="screenId">
-              <nb-option value="0">SC01</nb-option>
-              <nb-option value="1">SC02</nb-option>
+            <p class="form-label">Suất chiếu</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn suất chiếu..." id="type" formControlName="showtimeId">
+              <nb-option *ngFor="let showtime of showtimes" [value]="showtime.id">{{ showtime.movieName }} - {{
+                showtime.roomName }}</nb-option>
             </nb-select>
             <div
-              *ngIf="addTicketForm.get('screenId')?.invalid && (addTicketForm.get('screenId')?.dirty || addTicketForm.get('screenId')?.touched)">
-              <small class="text-danger" *ngIf="addTicketForm.get('screenId')?.errors?.required">Mã suất chiếu là bắt
-                buộc.</small>
+              *ngIf="addTicketForm.get('showtimeId')?.invalid && (addTicketForm.get('showtimeId')?.dirty || addTicketForm.get('showtimeId')?.touched)">
+              <small class="text-danger" *ngIf="addTicketForm.get('showtimeId')?.errors?.required">Vui lòng chọn suất
+                chiếu</small>
             </div>
           </nb-form-field>
         </div>
@@ -37,15 +37,14 @@
       <div class="row">
         <div class="col-md-6">
           <nb-form-field class="mt-3">
-            <p class="form-label">Mã ghế</p>
-            <nb-select fullWidth status="basic" placeholder="Chọn ghế..." id="seatId" formControlName="seatId">
-              <nb-option value="0">T001</nb-option>
-              <nb-option value="1">T002</nb-option>
+            <p class="form-label">Số ghế</p>
+            <nb-select fullWidth status="basic" placeholder="Chọn ghế..." id="seatNumber" formControlName="seatNumber">
+              <nb-option *ngFor="let seat of seats" [value]="seat">{{seat}}</nb-option>
             </nb-select>
             <div
-              *ngIf="addTicketForm.get('seatId')?.invalid && (addTicketForm.get('seatId')?.dirty || addTicketForm.get('seatId')?.touched)">
-              <small class="text-danger" *ngIf="addTicketForm.get('seatId')?.errors?.required">Mã ghế là bắt
-                buộc.</small>
+              *ngIf="addTicketForm.get('seatNumber')?.invalid && (addTicketForm.get('seatNumber')?.dirty || addTicketForm.get('seatNumber')?.touched)">
+              <small class="text-danger" *ngIf="addTicketForm.get('seatNumber')?.errors?.required">Vui lòng chọn số
+                ghế</small>
             </div>
           </nb-form-field>
         </div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,10 +15,13 @@ import {
   NbTimepickerModule,
 } from '@nebular/theme';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { JWTInterceptor } from './@core/interceptors';
+// import { AuthService } from './@core/services/apis';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,8 +43,17 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      newestOnTop: true,
+    }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

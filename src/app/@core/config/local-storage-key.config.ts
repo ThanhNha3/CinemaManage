@@ -1,6 +1,7 @@
-import {ILocalStorageKeyConfig} from "../interfaces";
+import { ILocalStorageKeyConfig } from '../interfaces';
 
 export const LOCALSTORAGE_KEY: ILocalStorageKeyConfig = {
   userInfo: 'userInfo',
-  token: 'token'
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
 };

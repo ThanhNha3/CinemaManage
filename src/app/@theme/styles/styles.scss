@@ -19,6 +19,7 @@
 
 @import './layout';
 @import './overrides';
+
 // install the framework and custom global styles
 @include nb-install() {
 
@@ -31,4 +32,6 @@
   @include ngx-pace-theme();
 
   @include nb-overrides();
-};
+}
+
+;

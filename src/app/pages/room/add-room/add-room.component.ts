@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RoomService } from 'app/@core/services/apis/room.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-room',
@@ -9,24 +12,33 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AddRoomComponent implements OnInit {
   addRoomForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private roomService: RoomService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addRoomForm = this.fb.group({
       name: ['', [Validators.required]],
       type: ['', Validators.required],
       capacity: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      roomStatus: ['', Validators.required],
+      status: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
     if (this.addRoomForm.valid) {
-      console.log(this.addRoomForm.value);
-      // Xử lý logic khi form hợp lệ
-    } else {
-      // Xử lý logic khi form không hợp lệ
-      console.log('Form không hợp lệ');
+      const data = {
+        ...this.addRoomForm.value,
+        capacity: Number(this.addRoomForm.value.capacity),
+        status: Number(this.addRoomForm.value.status),
+      };
+      this.roomService.create(data).subscribe((res) => {
+        this.toastr.success('Thêm mới thành công', 'Thông báo');
+        this.router.navigate(['/pages/room']);
+      });
     }
   }
 }

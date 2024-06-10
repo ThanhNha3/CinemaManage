@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import {AbstractStorageAdapter} from "./storage-adapter.service";
+import { AbstractStorageAdapter } from './storage-adapter.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService extends AbstractStorageAdapter {
-
   /**
    * Custom localStorage.getItem
    */
   getItem<T>(key: string): T {
+    if (localStorage.getItem(key) === 'undefined') return null;
     const data = JSON.parse(localStorage.getItem(key));
     if (data === 'undefined' || data === 'null') {
       return null;
     }
+
     return data;
   }
 

@@ -5,12 +5,9 @@ import { DialogConfirmComponent } from 'app/@theme/components/dialog-confirm/dia
 
 @Component({
   selector: 'app-movie',
-  template: `<app-movie-list
-    (deleteRequested)="openDeleteConfirmation()"
-  ></app-movie-list>`,
+  templateUrl: `./movie.component.html`,
 })
 export class MovieComponent {
-
   constructor(private dialogService: NbDialogService) {}
 
   openDeleteConfirmation() {

@@ -33,12 +33,10 @@ import { EditRevenueComponent } from './revenue/editRevenue/editRevenue.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieComponent } from './movie/movie.component';
 import { GenreComponent } from './genre/genre.component';
-import { GenreListComponent } from './genre/genre-list/genre-list.component';
 import { GenreAddComponent } from './genre/genre-add/genre-add.component';
 import { GenreEditComponent } from './genre/genre-edit/genre-edit.component';
 import { MovieAddComponent } from './movie/movie-add/movie-add.component';
 import { MovieEditComponent } from './movie/movie-edit/movie-edit.component';
-import { MovieListComponent } from './movie/movie-list/movie-list.component';
 import { NbMomentDateModule } from '@nebular/moment';
 @NgModule({
   imports: [
@@ -76,13 +74,11 @@ import { NbMomentDateModule } from '@nebular/moment';
     AddTicketComponent,
     EditTicketComponent,
     GenreComponent,
-    GenreListComponent,
     GenreAddComponent,
     GenreEditComponent,
     MovieComponent,
     MovieAddComponent,
     MovieEditComponent,
-    MovieListComponent,
   ],
   providers: [],
 })

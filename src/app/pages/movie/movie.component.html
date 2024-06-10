@@ -1,0 +1,46 @@
+<nb-card>
+    <nb-card-header class="d-flex justify-content-end align-items-center">
+      <a nbButton outline status="primary" routerLink="/pages/movie/add">
+        <nb-icon icon="plus-outline"></nb-icon>
+        Thêm mới
+      </a>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tên phim</th>
+              <th scope="col">Thể loại</th>
+              <th scope="col">Thời lượng</th>
+              <th scope="col">Đạo diễn</th>
+              <th scope="col">Mô tả</th>
+              <th scope="col">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Tom and Jerry</td>
+              <td>Hoạt hình</td>
+              <td>1h 30m</td>
+              <td>William Hanna, Joseph Barbera</td>
+              <td class="text-truncate-custom" style="max-width: 260px;">Tom and Jerry là một bộ phim hoạt hình nổi tiếng
+                của Mỹ được sáng tạo bởi WilliamnHanna và Joseph Barbera.</td>
+              <td>
+                <a nbButton status="info" routerLink="/pages/movie/edit/1"
+                  class="d-inline-flex justify-content-center align-items-center p-2 me-2">
+                  <nb-icon icon="edit-outline" status="control" class="icon"></nb-icon>
+                </a>
+                <a nbButton status="danger" (click)="openDeleteConfirmation()"
+                  class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1">
+                  <nb-icon icon="trash-outline" status="control" class="custom-icon"></nb-icon>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-card-body>
+  </nb-card>

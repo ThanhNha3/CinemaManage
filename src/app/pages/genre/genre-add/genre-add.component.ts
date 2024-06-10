@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { GenreService } from 'app/@core/services/apis/genre.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-genre-add',
@@ -9,6 +12,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class GenreAddComponent {
   addGenreForm!: FormGroup;
 
+  constructor(
+    private service: GenreService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
     this.addGenreForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -17,7 +26,15 @@ export class GenreAddComponent {
   }
   onSubmit() {
     if (this.addGenreForm.valid) {
-      console.log(this.addGenreForm.value);
+      this.service.create(this.addGenreForm.value).subscribe(
+        (res) => {
+          this.toastr.success('thêm thành công', 'Thông báo');
+          this.router.navigate(['/pages/genre']);
+        },
+        (err) => {
+          this.toastr.error('thêm thất bại', 'Thông báo');
+        }
+      );
     }
   }
 }

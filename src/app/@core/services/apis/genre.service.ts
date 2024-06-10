@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../common';
-import { UserProfile } from '../../model/user-info.model';
 import { API_ENDPOINT } from '../../config/api-endpoint.config';
 import { environment } from '@environments/environment';
 

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
+import { GenreService } from 'app/@core/services/apis/genre.service';
+import { MovieService } from 'app/@core/services/apis/movie.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-movie-add',
@@ -8,25 +13,42 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class MovieAddComponent {
   addMoiveForm!: FormGroup;
-
-  constructor() {}
+  genres: [];
+  constructor(
+    private dialogService: NbDialogService,
+    private toastr: ToastrService,
+    private service: MovieService,
+    private genreService: GenreService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addMoiveForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      type: new FormControl('', [Validators.required]),
-      capacity: new FormControl('', [
+      genreId: new FormControl('', [Validators.required]),
+      duration: new FormControl('', [
         Validators.required,
         Validators.pattern(/^-?(0|[1-9]\d*)?$/),
       ]),
       director: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
     });
+    this.genreService.get().subscribe((res) => {
+      this.genres = res.data;
+    });
   }
 
   onSubmit() {
     if (this.addMoiveForm.valid) {
-      console.log(this.addMoiveForm.value);
+      this.service.create(this.addMoiveForm.value).subscribe(
+        (res) => {
+          this.toastr.success('thêm thành công', 'Thông báo');
+          this.router.navigate(['/pages/movie']);
+        },
+        (err) => {
+          this.toastr.error('thêm thất bại', 'Thông báo');
+        }
+      );
     }
   }
 }

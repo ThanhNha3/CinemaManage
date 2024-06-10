@@ -58,6 +58,12 @@
           </tr>
         </tbody>
       </table>
+      <ngx-paginator
+        [apiUrl]="apiUrl"
+        [current_page]="currentPage"
+        [total_page]="totalPage"
+        (dataList)="updateData($event)"
+      ></ngx-paginator>
     </div>
   </nb-card-body>
 </nb-card>

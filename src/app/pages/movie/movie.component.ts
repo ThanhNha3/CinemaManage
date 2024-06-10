@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NbDialogService } from '@nebular/theme';
+import {
+  API_BASE_URL,
+  API_ENDPOINT,
+} from 'app/@core/config/api-endpoint.config';
 import { MovieService } from 'app/@core/services/apis/movie.service';
 import { DialogConfirmComponent } from 'app/@theme/components/dialog-confirm/dialog-confirm.component';
 import { ToastrService } from 'ngx-toastr';
@@ -10,6 +14,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: `./movie.component.html`,
 })
 export class MovieComponent {
+  apiUrl: string = API_BASE_URL + API_ENDPOINT.movie;
+  currentPage: number = 0;
+  totalPage: number = 0;
   data = [];
 
   constructor(
@@ -18,11 +25,19 @@ export class MovieComponent {
     private service: MovieService
   ) {}
 
+  updateData(res: any): void {
+    this.data = res.data;
+    this.currentPage = res.currentPage;
+    this.totalPage = res.totalPages;
+  }
+
   ngOnInit() {
     // Get dữ liệu Genres
     this.service.get().subscribe((res) => {
       if (res) {
         this.data = res.data;
+        this.currentPage = res.currentPage;
+        this.totalPage = res.totalPages;
       }
     });
   }

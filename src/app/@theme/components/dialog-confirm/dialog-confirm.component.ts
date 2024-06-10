@@ -10,8 +10,8 @@ import { NbDialogRef } from '@nebular/theme';
       <nb-card-footer
         class="d-flex justify-content-center align-items-center gap-3"
       >
-        <button nbButton hero status="primary" (click)="confirm()">Xóa</button>
-        <button nbButton hero status="danger" (click)="dismiss()">Hủy</button>
+        <button nbButton hero status="danger" (click)="confirm()">Xóa</button>
+        <button nbButton hero status="primary" (click)="dismiss()">Hủy</button>
       </nb-card-footer>
     </nb-card>
   `,

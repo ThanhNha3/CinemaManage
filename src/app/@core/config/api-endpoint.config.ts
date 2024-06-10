@@ -1,5 +1,5 @@
-import {APP_CONFIG} from "./app.config";
-import {IAPIEndpoint} from "../interfaces";
+import { APP_CONFIG } from './app.config';
+import { IAPIEndpoint } from '../interfaces';
 
 export const API_BASE_URL = APP_CONFIG.apiBaseUrl;
 
@@ -8,5 +8,12 @@ export const API_ENDPOINT: IAPIEndpoint = {
     base: API_BASE_URL + '/' + 'auth',
     login: '/auth/login',
     logout: '/auth/logout',
+    refreshToken: '/auth/refresh-token',
   },
+  user: '/users',
+  ticket: '/tickets',
+  room: '/rooms',
+  movie: '/movies',
+  showtime: '/showtimes',
+  genre: '/genres',
 };

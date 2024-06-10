@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GenreService } from 'app/@core/services/apis/genre.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-genre-edit',
@@ -8,16 +11,40 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class GenreEditComponent {
   editGenreForm!: FormGroup;
+  id!: number;
+
+  currentGenre: number;
+  currentDescription: string;
+
+  constructor(
+    private service: GenreService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.editGenreForm = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', [Validators.required]),
     });
+
+    this.id = Number(this.route.snapshot.params['id']);
+    this.service.getByid(this.id).subscribe((res) => {
+      if (res) {
+        this.editGenreForm.patchValue(res);
+      }
+    });
   }
   onSubmit() {
     if (this.editGenreForm.valid) {
-      console.log(this.editGenreForm.value);
+      this.service.edit(this.id, this.editGenreForm.value).subscribe(
+        (res) => {
+          if (res) {
+            this.toastr.success('Sửa thành công', 'Thông báo');
+          }
+        },
+        (error) => {}
+      );
     }
   }
 }

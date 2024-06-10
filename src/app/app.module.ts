@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +42,13 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      newestOnTop: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

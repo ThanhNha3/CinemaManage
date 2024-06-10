@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+import {
+  API_BASE_URL,
+  API_ENDPOINT,
+} from 'app/@core/config/api-endpoint.config';
 import { GenreService } from 'app/@core/services/apis/genre.service';
 import { DialogConfirmComponent } from 'app/@theme/components/dialog-confirm/dialog-confirm.component';
 import { ToastrService } from 'ngx-toastr';
@@ -9,19 +13,30 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './genre.component.html',
 })
 export class GenreComponent {
+  apiUrl: string = API_BASE_URL + API_ENDPOINT.genre;
+  currentPage: number = 0;
+  totalPage: number = 0;
   data = [];
 
   constructor(
     private dialogService: NbDialogService,
     private toastr: ToastrService,
-    private service: GenreService,
+    private service: GenreService
   ) {}
+
+  updateData(res: any): void {
+    this.data = res.data;
+    this.currentPage = res.currentPage;
+    this.totalPage = res.totalPages;
+  }
 
   ngOnInit() {
     // Get dữ liệu Genres
     this.service.get().subscribe((res) => {
       if (res) {
         this.data = res.data;
+        this.currentPage = res.currentPage;
+        this.totalPage = res.totalPages;
       }
     });
   }

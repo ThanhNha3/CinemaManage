@@ -39,7 +39,6 @@ export class MovieEditComponent {
     this.genreService.get().subscribe((res) => {
       this.genres = res.data;
       console.log(this.genres);
-      
     });
 
     this.id = Number(this.route.snapshot.params['id']);

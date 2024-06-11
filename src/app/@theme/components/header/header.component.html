@@ -17,7 +17,8 @@
       <input type="text" class="search" nbInput fullWidth placeholder="Tìm kiếm....">
     </nb-action>
     <nb-action class="user-action" *nbIsGranted="['view', 'user']">
-      <nb-user [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly" [picture]="user?.picture" [name]="user?.name">
+      <nb-user [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly" [picture]="user?.picture" [name]="user?.name"
+        nbContextMenuTag="user-context-menu">
       </nb-user>
     </nb-action>
   </nb-actions>

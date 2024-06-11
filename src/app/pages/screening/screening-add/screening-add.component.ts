@@ -71,7 +71,7 @@ export class ScreeningAddComponent implements OnInit {
     const formData = this.screeningAdd.value;
     this.showtimeService.create(formData).subscribe({
       next: (res) => {
-        this.toastr.success('Thêm mới suất chiếu thành công!');
+        this.toastr.success('Thêm mới suất chiếu', 'Thành công');
         this.screeningAdd.reset();
         this.router.navigate(['/pages/screening']);
       },

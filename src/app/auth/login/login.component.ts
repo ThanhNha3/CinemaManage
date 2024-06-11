@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       LOCALSTORAGE_KEY.refreshToken,
       res.refreshToken
     );
-    this.router.navigate([ROUTER_CONFIG.pages]).then();
+    this.router.navigate([ROUTER_CONFIG.pages + '/dashboard']).then();
     this.spinner.hide();
   }
 

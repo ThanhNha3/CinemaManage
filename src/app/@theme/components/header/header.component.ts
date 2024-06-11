@@ -10,6 +10,8 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LayoutService } from '../../../@core/services/common/layout.service';
 import { AuthService } from 'app/@core/services/apis';
+import { LocalStorageService } from 'app/@core/services/common';
+import { LOCALSTORAGE_KEY } from 'app/@core/config';
 
 @Component({
   selector: 'ngx-header',
@@ -20,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+  userInfo: any;
 
   themes = [
     {
@@ -45,12 +48,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private themeService: NbThemeService,
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private storageService: LocalStorageService
   ) {}
 
   ngOnInit() {
+    this.userInfo = this.storageService.getItem(LOCALSTORAGE_KEY.userInfo);
     this.currentTheme = this.themeService.currentTheme;
-    this.user = { name: 'Alibaba', picture: 'assets/images/account.png' };
+    this.user = {
+      name: this.userInfo.username,
+      picture: 'assets/images/account.png',
+    };
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService
       .onMediaQueryChange()
@@ -78,17 +86,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((event) => {
-        console.log(event);
-
         this.onItemSelection(event.title);
       });
   }
 
   onItemSelection(title: string) {
     if (title === 'Log out') {
-      console.log('Log out');
-
-      // this.authService.logout();
+      this.authService.logout();
     }
   }
 

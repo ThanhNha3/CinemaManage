@@ -9,58 +9,30 @@
         <div class="col-md-6">
           <nb-form-field>
             <label class="form-label" for="name">Tên phim</label>
-            <input
-              type="text"
-              nbInput
-              fullWidth
-              status="basic"
-              placeholder="Nhập tên phim..."
-              id="name"
-              formControlName="name"
-            />
-            <div
-              *ngIf="
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập tên phim..." id="name"
+              formControlName="name" />
+            <div *ngIf="
                 addMoiveForm.get('name')?.invalid &&
                 (addMoiveForm.get('name')?.dirty ||
                   addMoiveForm.get('name')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('name')?.errors?.required"
-                >Tên phim là bắt buộc</small
-              >
+              ">
+              <small class="text-danger" *ngIf="addMoiveForm.get('name')?.errors?.required">Tên phim là bắt buộc</small>
             </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
           <nb-form-field>
             <p class="form-label">Thể loại</p>
-            <nb-select
-              fullWidth
-              status="basic"
-              placeholder="Chọn thể loại..."
-              id="genreId"
-              formControlName="genreId"
-            >
-              <nb-option
-                *ngFor="let item of genres; index as i"
-                [value]="item.id"
-                >{{ item.name }}</nb-option
-              >
+            <nb-select fullWidth status="basic" placeholder="Chọn thể loại..." id="genreId" formControlName="genreId">
+              <nb-option *ngFor="let item of genres; index as i" [value]="item.id">{{ item.name }}</nb-option>
             </nb-select>
-            <div
-              *ngIf="
+            <div *ngIf="
                 addMoiveForm.get('genreId')?.invalid &&
                 (addMoiveForm.get('genreId')?.dirty ||
                   addMoiveForm.get('genreId')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('genreId')?.errors?.required"
-                >Thể loại là bắt buộc</small
-              >
+              ">
+              <small class="text-danger" *ngIf="addMoiveForm.get('genreId')?.errors?.required">Thể loại là bắt
+                buộc</small>
             </div>
           </nb-form-field>
         </div>
@@ -69,59 +41,32 @@
         <div class="col-md-6">
           <nb-form-field class="mt-3">
             <label class="form-label" for="duration">Thời lượng</label>
-            <input
-              type="text"
-              nbInput
-              fullWidth
-              status="basic"
-              placeholder="Nhập thời lượng (vd: 130)...."
-              id="duration"
-              formControlName="duration"
-            />
-            <div
-              *ngIf="
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập thời lượng (vd: 130)...."
+              id="duration" formControlName="duration" />
+            <div *ngIf="
                 addMoiveForm.get('duration')?.invalid &&
                 (addMoiveForm.get('duration')?.dirty ||
                   addMoiveForm.get('duration')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('duration')?.errors?.required"
-                >Thời lượng là bắt buộc</small
-              >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('duration')?.errors?.pattern"
-                >Thời lượng phải là số</small
-              >
+              ">
+              <small class="text-danger" *ngIf="addMoiveForm.get('duration')?.errors?.required">Thời lượng là bắt
+                buộc</small>
+              <small class="text-danger" *ngIf="addMoiveForm.get('duration')?.errors?.pattern">Thời lượng phải là
+                số</small>
             </div>
           </nb-form-field>
         </div>
         <div class="col-md-6">
-          <nb-form-field>
+          <nb-form-field class="mt-3">
             <label class="form-label" for="director">Đạo diễn</label>
-            <input
-              type="text"
-              nbInput
-              fullWidth
-              status="basic"
-              placeholder="Nhập tên đạo diễn..."
-              id="director"
-              formControlName="director"
-            />
-            <div
-              *ngIf="
+            <input type="text" nbInput fullWidth status="basic" placeholder="Nhập tên đạo diễn..." id="director"
+              formControlName="director" />
+            <div *ngIf="
                 addMoiveForm.get('director')?.invalid &&
                 (addMoiveForm.get('director')?.dirty ||
                   addMoiveForm.get('director')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('director')?.errors?.required"
-                >Đạo diễn là bắt buộc</small
-              >
+              ">
+              <small class="text-danger" *ngIf="addMoiveForm.get('director')?.errors?.required">Đạo diễn là bắt
+                buộc</small>
             </div>
           </nb-form-field>
         </div>
@@ -130,38 +75,21 @@
         <div class="col-md-12">
           <nb-form-field class="mt-3">
             <label class="form-label" for="duration">Mô tả</label>
-            <textarea
-              type="text"
-              nbInput
-              fullWidth
-              status="basic"
-              placeholder="Mô tả...."
-              id="description"
-              formControlName="description"
-            ></textarea>
-            <div
-              *ngIf="
+            <textarea type="text" nbInput fullWidth status="basic" placeholder="Mô tả...." id="description"
+              formControlName="description"></textarea>
+            <div *ngIf="
                 addMoiveForm.get('description')?.invalid &&
                 (addMoiveForm.get('description')?.dirty ||
                   addMoiveForm.get('description')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="addMoiveForm.get('description')?.errors?.required"
-                >Mô tả là bắt buộc</small
-              >
+              ">
+              <small class="text-danger" *ngIf="addMoiveForm.get('description')?.errors?.required">Mô tả là bắt
+                buộc</small>
             </div>
           </nb-form-field>
         </div>
       </div>
       <div class="mt-3 d-flex column-gap-3">
-        <button
-          nbButton
-          hero
-          status="primary"
-          [disabled]="addMoiveForm.invalid"
-        >
+        <button nbButton hero status="primary" [disabled]="addMoiveForm.invalid">
           Thêm mới
         </button>
         <button nbButton hero status="success" type="reset">Reset</button>

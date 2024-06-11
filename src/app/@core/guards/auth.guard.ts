@@ -33,25 +33,25 @@ export class AuthGuard implements CanActivate {
     if (!this.authService.isLoggedIn()) {
       const refreshToken = this.authService.getRefreshToken();
       if (refreshToken === null) {
-        this.router.navigate(['auth/login']);
-        return false; // Return false immediately if no refresh token
+        this.router.navigate([ROUTER_CONFIG.auth.login]);
+        return false;
       } else {
         return this.authService.refreshToken().pipe(
           map((newToken) => {
             if (!newToken) {
-              this.router.navigate(['auth/login']);
+              this.router.navigate([ROUTER_CONFIG.auth.login]);
               return false;
             }
-            return true; // Return true if the new token is obtained
+            return true;
           }),
           catchError(() => {
-            this.router.navigate(['auth/login']);
-            return of(false); // Return false if there's an error during token refresh
+            this.router.navigate([ROUTER_CONFIG.auth.login]);
+            return of(false);
           })
         );
       }
     }
-    return true; // Return true if already logged in
+    return true;
   }
 
   canActivateChild(): Observable<boolean> | Promise<boolean> | boolean {

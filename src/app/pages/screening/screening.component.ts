@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
-import { API_BASE_URL, API_ENDPOINT } from 'app/@core/config/api-endpoint.config';
+import {
+  API_BASE_URL,
+  API_ENDPOINT,
+} from 'app/@core/config/api-endpoint.config';
 import { ShowtimeService } from 'app/@core/services/apis/showtime.service';
 import { DateUtil } from 'app/@core/utils/date.util';
 import { DialogConfirmComponent } from 'app/@theme/components/dialog-confirm/dialog-confirm.component';
@@ -22,10 +25,8 @@ export class ScreeningComponent {
     private dialogService: NbDialogService,
     private showtimeService: ShowtimeService,
     private toastr: ToastrService,
-    private router: Router,
-
+    private router: Router
   ) {}
-
 
   ngOnInit(): void {
     this.getAllShowTime();
@@ -68,7 +69,7 @@ export class ScreeningComponent {
         if (confirmed) {
           console.log(id);
           this.showtimeService.delete(id).subscribe(() => {
-            this.toastr.success('Xóa thành công!');
+            this.toastr.success('Xóa thành công', 'Thông báo');
             this.getAllShowTime();
           });
         }

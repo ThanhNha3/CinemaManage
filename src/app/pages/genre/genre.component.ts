@@ -32,7 +32,7 @@ export class GenreComponent {
 
   ngOnInit() {
     // Get dữ liệu Genres
-    this.service.get().subscribe((res) => {
+    this.service.getAll().subscribe((res) => {
       if (res) {
         this.data = res.data;
         this.currentPage = res.currentPage;
@@ -51,12 +51,16 @@ export class GenreComponent {
         autoFocus: false,
       })
       .onClose.subscribe((result) => {
-        console.log('result', result);
         if (result) {
           this.service.remove(id).subscribe(
             (res) => {
               if (res) {
                 this.toastr.success('Xóa thành công', 'Thông báo');
+                this.service.getAll().subscribe((res) => {
+                  this.data = res.data;
+                  this.currentPage = res.currentPage;
+                  this.totalPage = res.totalPages;
+                });
               }
             },
             (error) => {

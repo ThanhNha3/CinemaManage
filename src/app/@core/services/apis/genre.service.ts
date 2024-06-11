@@ -15,17 +15,17 @@ export class GenreService extends ApiService {
     super(_http);
   }
 
-  get(): Observable<any> {
+  getAll(): Observable<any> {
     return this._http.get(environment.apiBaseUrl + API_ENDPOINT.genre);
   }
 
-  getByid(id: number): Observable<any> {
+  getById(id: number): Observable<any> {
     return this._http.get(
       environment.apiBaseUrl + API_ENDPOINT.genre + '/' + id
     );
   }
 
-  create(data): Observable<any> {
+  create(data: any): Observable<any> {
     return this._http.post(environment.apiBaseUrl + API_ENDPOINT.genre, data);
   }
 
@@ -35,7 +35,7 @@ export class GenreService extends ApiService {
     );
   }
 
-  edit(id: number, data): Observable<any> {
+  edit(id: number, data: any): Observable<any> {
     return this._http.put(
       environment.apiBaseUrl + API_ENDPOINT.genre + '/' + id,
       data

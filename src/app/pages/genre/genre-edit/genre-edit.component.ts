@@ -19,7 +19,8 @@ export class GenreEditComponent {
   constructor(
     private service: GenreService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class GenreEditComponent {
     });
 
     this.id = Number(this.route.snapshot.params['id']);
-    this.service.getByid(this.id).subscribe((res) => {
+    this.service.getById(this.id).subscribe((res) => {
       if (res) {
         this.editGenreForm.patchValue(res);
       }
@@ -40,10 +41,13 @@ export class GenreEditComponent {
       this.service.edit(this.id, this.editGenreForm.value).subscribe(
         (res) => {
           if (res) {
-            this.toastr.success('Sửa thành công', 'Thông báo');
+            this.toastr.success('Cập nhật thành công', 'Thông báo');
+            this.router.navigate(['/pages/genre']);
           }
         },
-        (error) => {}
+        (error) => {
+          console.log(error);
+        }
       );
     }
   }

@@ -44,11 +44,10 @@ export class EmployeeEditComponent implements OnInit {
       this.userService.edit(this.userData.id, formData).subscribe({
         next: (res) => {
           console.log('Thành công', res);
-          this.toastr.success('Chỉnh sửa thành công!');
+          this.toastr.success('Cập nhật thành công', 'Thông báo');
           this.router.navigate(['/pages/employee']);
         },
         error: (error) => {
-          console.error('Error', error);
           this.toastr.error('Có lỗi xảy ra, vui lòng thử lại.');
         },
       });

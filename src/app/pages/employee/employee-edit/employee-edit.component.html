@@ -8,9 +8,11 @@
         <div class="col-md-6">
           <nb-form-field>
             <label class="form-label" for="username">Tên nhân viên</label>
-            <input type="text" nbInput formControlName="username" status="basic" placeholder="Nhập tên nhân viên..." id="username">
+            <input type="text" nbInput formControlName="username" status="basic" placeholder="Nhập tên nhân viên..."
+              id="username">
           </nb-form-field>
-          <small class="text-danger" *ngIf="userEdit.get('username')?.invalid && (userEdit.get('username')?.dirty || userEdit.get('username')?.touched)">
+          <small class="text-danger"
+            *ngIf="userEdit.get('username')?.invalid && (userEdit.get('username')?.dirty || userEdit.get('username')?.touched)">
             <ng-container *ngIf="userEdit.get('username')?.errors?.required">
               Vui lòng nhập tên nhân viên
             </ng-container>
@@ -21,7 +23,8 @@
             <label class="form-label" for="email">Email</label>
             <input type="text" nbInput formControlName="email" status="basic" placeholder="Nhập email..." id="email">
           </nb-form-field>
-          <small class="text-danger" *ngIf="userEdit.get('email')?.invalid && (userEdit.get('email')?.dirty || userEdit.get('email')?.touched)">
+          <small class="text-danger"
+            *ngIf="userEdit.get('email')?.invalid && (userEdit.get('email')?.dirty || userEdit.get('email')?.touched)">
             <ng-container *ngIf="userEdit.get('email')?.errors?.required">
               Vui lòng nhập email
             </ng-container>
@@ -32,7 +35,7 @@
         </div>
       </div>
       <div class="mt-3 d-flex column-gap-3">
-        <button nbButton hero status="primary">Lưu</button>
+        <button nbButton hero status="primary">Chỉnh sửa</button>
         <button nbButton hero status="success" type="reset">Reset</button>
         <a nbButton status="basic" routerLink="/pages/employee">Quay lại</a>
       </div>

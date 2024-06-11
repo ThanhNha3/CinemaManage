@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, catchError, of, switchMap } from 'rxjs';
+import { Observable, catchError, from, of, switchMap } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { IAlertMessage } from '../../../@theme/components/alert/ngx-alerts.component';
@@ -133,6 +133,28 @@ export class AuthService extends ApiService {
 
   override getAccessToken() {
     return this.localStorageService.getItem<any>(LOCALSTORAGE_KEY.accessToken);
+  }
+
+  isExpiredAccessToken(): Observable<boolean> {
+    const token = this.getAccessToken();
+    if (token) {
+      const isExpired = this.jwtHelperService.isTokenExpired(token);
+      return isExpired instanceof Promise ? from(isExpired) : of(isExpired);
+    }
+    return of(true);
+  }
+
+  isExpiredRefreshToken(): Observable<boolean> {
+    const token = this.getRefreshToken();
+    if (token) {
+      const isExpired = this.jwtHelperService.isTokenExpired(token);
+      return isExpired instanceof Promise ? from(isExpired) : of(isExpired);
+    }
+    return of(true);
+  }
+
+  setAccessToken(token: string): void {
+    this.localStorageService.setItem(LOCALSTORAGE_KEY.accessToken, token);
   }
 
   getRefreshToken() {

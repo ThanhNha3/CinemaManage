@@ -25,7 +25,7 @@ export class ScreeningEditComponent implements OnInit {
     private roomService: RoomService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class ScreeningEditComponent implements OnInit {
 
     const id = this.route.snapshot.params['id'];
     this.showtimeService.getById(id).subscribe((res) => {
-      console.log(res);
       this.dataShowtime = res;
       this.patchFormValues(this.dataShowtime);
     });
@@ -51,8 +50,7 @@ export class ScreeningEditComponent implements OnInit {
       const formData = this.screeningEdit.value;
       this.showtimeService.edit(this.dataShowtime.id, formData).subscribe({
         next: (res) => {
-          this.toastr.success('Chỉnh sửa thành công!');
-          console.log('Showtime updated successfully:', res);
+          this.toastr.success('Cập nhật thành công', 'Thông báo');
           this.router.navigate(['/pages/screening']);
         },
         error: (error) => {
@@ -72,8 +70,6 @@ export class ScreeningEditComponent implements OnInit {
 
   private patchFormValues(showtimeData: any): void {
     if (showtimeData) {
-      console.log(showtimeData);
-
       this.screeningEdit.patchValue({
         movieId: showtimeData.movieId,
         roomId: showtimeData.roomId,

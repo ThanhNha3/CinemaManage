@@ -17,7 +17,6 @@
             <th scope="col">Đạo diễn</th>
             <th scope="col">Mô tả</th>
             <th scope="col">Thao tác</th>
-          </tr>
         </thead>
         <tbody *ngFor="let item of data; index as i">
           <tr>
@@ -30,40 +29,20 @@
               {{ item.description }}
             </td>
             <td>
-              <a
-                nbButton
-                status="info"
-                [routerLink]="['/pages/movie/edit', item.id]"
-                class="d-inline-flex justify-content-center align-items-center p-2 me-2"
-              >
-                <nb-icon
-                  icon="edit-outline"
-                  status="control"
-                  class="icon"
-                ></nb-icon>
+              <a nbButton status="info" [routerLink]="['/pages/movie/edit', item.id]"
+                class="d-inline-flex justify-content-center align-items-center p-2 me-2">
+                <nb-icon icon="edit-outline" status="control" class="icon"></nb-icon>
               </a>
-              <a
-                nbButton
-                status="danger"
-                (click)="openDeleteConfirmation(item.id)"
-                class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1"
-              >
-                <nb-icon
-                  icon="trash-outline"
-                  status="control"
-                  class="custom-icon"
-                ></nb-icon>
+              <a nbButton status="danger" (click)="openDeleteConfirmation(item.id)"
+                class="d-inline-flex justify-content-center align-items-center p-2 border rounded-1">
+                <nb-icon icon="trash-outline" status="control" class="custom-icon"></nb-icon>
               </a>
             </td>
           </tr>
         </tbody>
       </table>
-      <ngx-paginator
-        [apiUrl]="apiUrl"
-        [current_page]="currentPage"
-        [total_page]="totalPage"
-        (dataList)="updateData($event)"
-      ></ngx-paginator>
+      <ngx-paginator [apiUrl]="apiUrl" [current_page]="currentPage" [total_page]="totalPage"
+        (dataList)="updateData($event)"></ngx-paginator>
     </div>
   </nb-card-body>
 </nb-card>

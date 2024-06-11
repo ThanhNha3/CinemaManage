@@ -15,17 +15,17 @@ export class MovieService extends ApiService {
     super(_http);
   }
 
-  get(): Observable<any> {
+  getAll(): Observable<any> {
     return this._http.get(environment.apiBaseUrl + API_ENDPOINT.movie);
   }
 
-  getByid(id: number): Observable<any> {
+  getById(id: number): Observable<any> {
     return this._http.get(
       environment.apiBaseUrl + API_ENDPOINT.movie + '/' + id
     );
   }
 
-  create(data): Observable<any> {
+  create(data: any): Observable<any> {
     return this._http.post(environment.apiBaseUrl + API_ENDPOINT.movie, data);
   }
 
@@ -35,7 +35,7 @@ export class MovieService extends ApiService {
     );
   }
 
-  edit(id: number, data): Observable<any> {
+  edit(id: number, data: any): Observable<any> {
     return this._http.put(
       environment.apiBaseUrl + API_ENDPOINT.movie + '/' + id,
       data

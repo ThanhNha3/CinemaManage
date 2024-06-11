@@ -28,11 +28,11 @@ export class GenreAddComponent {
     if (this.addGenreForm.valid) {
       this.service.create(this.addGenreForm.value).subscribe(
         (res) => {
-          this.toastr.success('thêm thành công', 'Thông báo');
+          this.toastr.success('Thêm mới thành công', 'Thông báo');
           this.router.navigate(['/pages/genre']);
         },
         (err) => {
-          this.toastr.error('thêm thất bại', 'Thông báo');
+          this.toastr.error('Thêm thất bại', 'Thông báo');
         }
       );
     }

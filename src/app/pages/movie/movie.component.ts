@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { NbDialogService } from '@nebular/theme';
 import {
   API_BASE_URL,
@@ -12,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-movie',
   templateUrl: `./movie.component.html`,
+  styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
   apiUrl: string = API_BASE_URL + API_ENDPOINT.movie;
@@ -33,7 +33,7 @@ export class MovieComponent {
 
   ngOnInit() {
     // Get dữ liệu Genres
-    this.service.get().subscribe((res) => {
+    this.service.getAll().subscribe((res) => {
       if (res) {
         this.data = res.data;
         this.currentPage = res.currentPage;
@@ -52,11 +52,17 @@ export class MovieComponent {
         autoFocus: false,
       })
       .onClose.subscribe((result) => {
-        console.log('result', result);
         if (result) {
           this.service.remove(id).subscribe(
             (res) => {
               this.toastr.success('Xóa thành công', 'Thông báo');
+              this.service.getAll().subscribe((res) => {
+                if (res) {
+                  this.data = res.data;
+                  this.currentPage = res.currentPage;
+                  this.totalPage = res.totalPages;
+                }
+              });
             },
             (error) => {
               this.toastr.error('Xóa thất bại', 'Thông báo');

@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { MovieService } from 'app/@core/services/apis/movie.service';
+import { Router } from '@angular/router';
 import { UserService } from 'app/@core/services/apis/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-employee-add',
@@ -17,14 +15,17 @@ export class EmployeeAddComponent {
   constructor(
     private userService: UserService,
     private router: Router,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.userAdd = new FormGroup({
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
 
@@ -35,24 +36,22 @@ export class EmployeeAddComponent {
     }
   }
 
-  protected handleError(error) {
-    console.log(error);
-  }
-
+  // protected handleError(error) {
+  //   console.log(error);
+  // }
 
   createUser() {
     const formData = this.userAdd.value;
     this.userService.create(formData).subscribe({
       next: (res) => {
-        console.log('Thành công:', res);
-        this.toastr.success('Thêm thành công!');
+        this.toastr.success('Thêm mới thành công', 'Thông báo');
         this.userAdd.reset();
         this.router.navigate(['/pages/employee']);
       },
-      error: (error) => {
-        console.error('Error:', error);
-        this.handleError(error);
-      },
+      // error: (error) => {
+      //   console.error('Error:', error);
+      //   this.handleError(error);
+      // },
     });
   }
 }

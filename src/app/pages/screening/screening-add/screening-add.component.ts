@@ -23,8 +23,7 @@ export class ScreeningAddComponent implements OnInit {
     private movieService: MovieService,
     private roomService: RoomService,
     private toastr: ToastrService,
-    private router: Router,
-
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +42,7 @@ export class ScreeningAddComponent implements OnInit {
       console.log(this.screeningAdd.value);
       this.createShowtime();
     } else {
-      this.screeningAdd.markAllAsTouched(); // Mark all controls as touched to show validation errors
+      this.screeningAdd.markAllAsTouched();
     }
   }
 
@@ -61,10 +60,10 @@ export class ScreeningAddComponent implements OnInit {
         this.movieList = movies.data;
         this.roomList = rooms.data;
         console.log(this.movieList, this.roomList);
-      },
-      (error) => {
-        console.error('Error:', error);
       }
+      // (error) => {
+      //   console.error('Error:', error);
+      // }
     );
   }
 
@@ -72,15 +71,13 @@ export class ScreeningAddComponent implements OnInit {
     const formData = this.screeningAdd.value;
     this.showtimeService.create(formData).subscribe({
       next: (res) => {
-        console.log('Thành công:', res);
         this.toastr.success('Thêm mới suất chiếu thành công!');
         this.screeningAdd.reset();
         this.router.navigate(['/pages/screening']);
-
       },
       error: (error) => {
-        console.error('Error:', error);
-        this.handleError(error);
+        // console.error('Error:', error);
+        // this.handleError(error);
         this.toastr.error('Có lỗi xảy ra, vui lòng thử lại.');
       },
     });

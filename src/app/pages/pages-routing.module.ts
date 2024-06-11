@@ -32,18 +32,18 @@ const routes: Routes = [
         component: DashboardComponent,
         data: { breadcrumb: 'Dashboard' },
       },
-      {
-        path: 'revenue',
-        component: RevenueComponent,
-        data: { breadcrumb: 'Doanh thu' },
-        // children: [
-        //   {
-        //     path: '/',
-        //     component: AddRevenueComponent,
-        //     data: { breadcrumb: 'Chart' },
-        //   },
-        // ],
-      },
+      // {
+      //   path: 'revenue',
+      //   component: RevenueComponent,
+      //   data: { breadcrumb: 'Doanh thu' },
+      // children: [
+      //   {
+      //     path: '/',
+      //     component: AddRevenueComponent,
+      //     data: { breadcrumb: 'Chart' },
+      //   },
+      // ],
+      // },
       {
         path: 'screening',
         data: { breadcrumb: 'Suất chiếu' },

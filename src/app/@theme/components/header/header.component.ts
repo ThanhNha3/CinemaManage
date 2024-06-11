@@ -6,9 +6,10 @@ import {
   NbThemeService,
 } from '@nebular/theme';
 
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LayoutService } from '../../../@core/services/common/layout.service';
+import { AuthService } from 'app/@core/services/apis';
 
 @Component({
   selector: 'ngx-header',
@@ -34,8 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'default';
 
   userMenu = [
-    { title: 'Profile' },
-    { title: 'Log out', label: '/auth/logout' },
+    { title: 'Profile', label: 'profile' },
+    { title: 'Log out', label: 'logout' },
   ];
 
   constructor(
@@ -43,7 +44,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private menuService: NbMenuService,
     private themeService: NbThemeService,
     private layoutService: LayoutService,
-    private breakpointService: NbMediaBreakpointsService
+    private breakpointService: NbMediaBreakpointsService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -67,6 +69,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((themeName) => (this.currentTheme = themeName));
+
+    this.menuService
+      .onItemClick()
+      .pipe(
+        filter(({ tag }) => tag === 'user-context-menu'),
+        map(({ item }) => item),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((event) => {
+        console.log(event);
+
+        this.onItemSelection(event.title);
+      });
+  }
+
+  onItemSelection(title: string) {
+    if (title === 'Log out') {
+      console.log('Log out');
+
+      // this.authService.logout();
+    }
   }
 
   ngOnDestroy() {

@@ -1,0 +1,8 @@
+td.text-truncate-custom {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical !important;
+  word-break: break-word !important;
+  white-space: wrap !important;
+}

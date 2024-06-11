@@ -36,9 +36,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'people-outline',
     link: '/pages/employee',
   },
-  {
-    title: 'Doanh thu',
-    icon: 'pie-chart-outline',
-    link: '/pages/revenue',
-  },
+  // {
+  //   title: 'Doanh thu',
+  //   icon: 'pie-chart-outline',
+  //   link: '/pages/revenue',
+  // },
 ];

@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MovieEditComponent {
   editMovieForm!: FormGroup;
+  imageUrl: string = '';
   id!: number;
   genres: [];
   constructor(
@@ -23,7 +24,6 @@ export class MovieEditComponent {
   ) {}
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.params['id']);
     this.editMovieForm = new FormGroup({
       name: new FormControl('', Validators.required),
       genreId: new FormControl('', [Validators.required]),
@@ -33,11 +33,11 @@ export class MovieEditComponent {
       ]),
       director: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+      poster: new FormControl('', [Validators.required]),
     });
 
     this.genreService.getAll().subscribe((res) => {
       this.genres = res.data;
-      console.log(this.genres);
     });
 
     this.id = Number(this.route.snapshot.params['id']);
@@ -46,8 +46,18 @@ export class MovieEditComponent {
       if (res) {
         this.genreService.getById(res.genreId);
         this.editMovieForm.patchValue(res);
+        this.imageUrl = res.poster;
       }
     });
+  }
+
+  get imageControl(): FormControl | null {
+    const control = this.editMovieForm.get('poster');
+    return control instanceof FormControl ? control : null;
+  }
+
+  onImageChanged(url: string): void {
+    this.imageUrl = url;
   }
 
   onSubmit() {

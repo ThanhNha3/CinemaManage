@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class MovieAddComponent {
   addMoiveForm!: FormGroup;
   genres: [];
+  imageUrl: string = '';
+
   constructor(
     private toastr: ToastrService,
     private service: MovieService,
@@ -30,21 +32,33 @@ export class MovieAddComponent {
       ]),
       director: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+      poster: new FormControl('', [Validators.required]),
     });
     this.genreService.getAll().subscribe((res) => {
       this.genres = res.data;
     });
   }
 
+  get imageControl(): FormControl | null {
+    const control = this.addMoiveForm.get('poster');
+    return control instanceof FormControl ? control : null;
+  }
+
+  onImageChanged(url: string): void {
+    this.imageUrl = url;
+  }
+
   onSubmit() {
     if (this.addMoiveForm.valid) {
-      this.service.create(this.addMoiveForm.value).subscribe(
+      const data = { ...this.addMoiveForm.value, poster: this.imageUrl };
+
+      this.service.create(data).subscribe(
         (res) => {
-          this.toastr.success('Thêm thành công', 'Thông báo');
+          this.toastr.success('Thêm mới thành công', 'Thông báo');
           this.router.navigate(['/pages/movie']);
         },
         (err) => {
-          this.toastr.error('Thêm thất bại', 'Thông báo');
+          this.toastr.error('Thêm mới thất bại', 'Thông báo');
         }
       );
     }

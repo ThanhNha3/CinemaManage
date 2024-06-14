@@ -78,7 +78,6 @@ export class JWTInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // Kiểm tra nếu URL là '/auth', gửi request luôn
     if (this.isAuthRequest(request.url)) {
       return next.handle(request);
     }

@@ -11,15 +11,15 @@ import {
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
-  NbThemeModule, NbAlertModule, NbCardModule, NbInputModule,
+  NbThemeModule,
+  NbAlertModule,
+  NbCardModule,
+  NbInputModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
 
-import {
-  FooterComponent,
-  HeaderComponent,
-} from './components';
+import { FooterComponent, HeaderComponent } from './components';
 import {
   CapitalizePipe,
   PluralPipe,
@@ -34,10 +34,11 @@ import {
 } from './layouts';
 import { DEFAULT_THEME } from './styles/theme.default';
 import { DARK_THEME } from './styles/theme.dark';
-import {AlertShowcaseComponent} from "./components/alert/ngx-alerts.component";
-import {DialogConfirmComponent} from "./components/dialog-confirm/dialog-confirm.component";
-import {BreadcrumbModule} from "xng-breadcrumb";
-import {RouterLink} from "@angular/router";
+import { AlertShowcaseComponent } from './components/alert/ngx-alerts.component';
+import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { RouterLink } from '@angular/router';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 const NB_MODULES = [
   NbCardModule,
@@ -62,6 +63,7 @@ const COMPONENTS = [
   TwoColumnsLayoutComponent,
   AlertShowcaseComponent,
   DialogConfirmComponent,
+  ImageUploadComponent,
 ];
 const PIPES = [
   CapitalizePipe,
@@ -72,7 +74,14 @@ const PIPES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES, NbAlertModule, BreadcrumbModule, RouterLink, NbInputModule],
+  imports: [
+    CommonModule,
+    ...NB_MODULES,
+    NbAlertModule,
+    BreadcrumbModule,
+    RouterLink,
+    NbInputModule,
+  ],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
   declarations: [...COMPONENTS, ...PIPES],
 })
@@ -85,7 +94,7 @@ export class ThemeModule {
           {
             name: 'default',
           },
-          [ DEFAULT_THEME, DARK_THEME ],
+          [DEFAULT_THEME, DARK_THEME]
         ).providers,
       ],
     };

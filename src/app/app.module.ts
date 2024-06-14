@@ -20,9 +20,10 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { JWTInterceptor } from './@core/interceptors';
-// import { AuthService } from './@core/services/apis';
 import { ToastrModule } from 'ngx-toastr';
-
+import { environment } from '../environments/environment';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -50,6 +51,8 @@ import { ToastrModule } from 'ngx-toastr';
       progressAnimation: 'decreasing',
       newestOnTop: true,
     }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },

@@ -7,8 +7,8 @@
   </nb-card-header>
   <nb-card-body>
     <div class="table-responsive">
-      <table class="table table-hover align-middle">
-        <thead>
+      <table class="table table-hover align-middle" [ngClass]="{'table-dark': isDarkTheme}">
+        <thead [ngClass]="{'thead-dark': isDarkTheme}">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Tên phim</th>
@@ -17,17 +17,16 @@
             <th scope="col">Đạo diễn</th>
             <th scope="col">Mô tả</th>
             <th scope="col">Thao tác</th>
+          </tr>
         </thead>
-        <tbody *ngFor="let item of data; index as i">
+        <tbody *ngFor="let item of data; let i = index">
           <tr>
             <td>{{ i + 1 }}</td>
             <td>{{ item.name }}</td>
             <td>Hoạt hình</td>
             <td>{{ item.duration }}</td>
             <td>{{ item.director }}</td>
-            <td class="text-truncate-custom" style="max-width: 260px">
-              {{ item.description }}
-            </td>
+            <td class="text-truncate-custom" style="max-width: 260px">{{ item.description }}</td>
             <td>
               <a nbButton status="info" [routerLink]="['/pages/movie/edit', item.id]"
                 class="d-inline-flex justify-content-center align-items-center p-2 me-2">

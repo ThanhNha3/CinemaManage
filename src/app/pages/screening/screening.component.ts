@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbThemeService } from '@nebular/theme';
+import { Subscription } from 'rxjs';
 import {
   API_BASE_URL,
   API_ENDPOINT,
@@ -21,14 +22,28 @@ export class ScreeningComponent {
   apiUrl: string = API_BASE_URL + API_ENDPOINT.showtime;
   currentPage: number = 0;
   totalPage: number = 0;
+  isDarkTheme: boolean = false; // Initialize to false by default
+  themeSubscription: Subscription;
+
   constructor(
     private dialogService: NbDialogService,
     private showtimeService: ShowtimeService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private themeService: NbThemeService // Inject NbThemeService
+
   ) {}
 
   ngOnInit(): void {
+    // Check initial theme
+    this.isDarkTheme = this.themeService.currentTheme === 'dark';
+
+    // Subscribe to theme changes
+    this.themeSubscription = this.themeService.onThemeChange()
+      .subscribe(theme => {
+        this.isDarkTheme = theme?.name === 'dark'; // Adjust 'dark' based on your theme names
+      });
+
     this.getAllShowTime();
   }
 
